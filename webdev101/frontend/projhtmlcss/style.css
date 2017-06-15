@@ -94,10 +94,22 @@ div.box2 {
 }
 
 .box3 {
+	height: auto;
+	width: auto;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
+}
+
+.box3 .lbutton {
+	background-color: #e0e0e0; 
+	padding: 15px;
+}
+
+.box3 .rbutton {
+	background-color: #e0e0e0;
+	padding: 15px;
 }
 
 .box4 {
