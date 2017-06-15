@@ -2,7 +2,7 @@
 	margin: 0; padding: 0;
 }
 
-div.logo {
+div.box {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -15,28 +15,154 @@ div.header {
 	padding: 10px;
 	top: 2px;
 	font-family: Verdana;
+	font-size: .84em;
 	float: right;
+	width: 280px;
 }
 
-.header .gmail {
-	margin: 2px;
+.header a.gmail {
+	margin: 10px;
+	float: left;
+	color: gray;
+	text-decoration: none;
 }
 
-.header .images {
-	margin: 2px;
+.header a.images {
+	margin: 10px;
+	width: 50px;
+	float: left;
+	color: gray;
+	text-decoration: none;
 }
 
-.header .grid {
-	margin: 2px;
+img.bell {
+	width: 30px;
+	height: auto;
 }
 
 .header .signin {
-	margin: 2px;
+	margin: 6px 8px 8px 10px;
 	width: 70px;
 	height: 30px;
 	color: white;
 	background-color: #4387fd;
 	border-color: #4387fd;
+	float: left;
 }
 
 
+.header a.gmail:hover {
+	text-decoration: underline;
+}
+
+.header a.images:hover {
+	text-decoration: underline;
+}
+
+.header .signin:hover {
+	text-decoration: underline;
+}
+
+.header .apps {
+	margin: 6px 8px 8px 8px;
+	float: left;
+}
+
+.logo {
+	width: 350px;
+	height: auto;
+}
+
+div.footer {
+	width: 100%;
+	height: 2.9em;
+	margin: 10px 10px 0 0;
+	position: fixed;
+	bottom: 0;
+	background-color: #e0e0e0;
+}
+
+.footer .b12 {
+	margin-top: 11px;
+}
+
+.footer .block1 {
+
+}
+
+.footer .block2 {
+	float: right;
+	margin-right: 10px;
+}
+
+.footer .block1 .advertising {
+	margin-left: 10px;
+	font-size: 1em;
+	font-family: Verdana;
+	color: gray;
+	text-decoration: none;
+}
+
+.footer .block1 .business {
+	margin-left: 10px;
+	font-size: 1em;
+	font-family: Verdana;
+	color: gray;
+	text-decoration: none;
+}
+
+.footer .block1 .about {
+	margin-left: 10px;
+	font-size: 1em;
+	font-family: Verdana;
+	color: gray;
+	text-decoration: none;
+}
+
+.footer .block2 .privacy {
+	margin-right: 10px;
+	font-size: 1em;
+	font-family: Verdana;
+	color: gray;
+	text-decoration: none;
+}
+
+.footer .block2 .terms {
+	margin-right: 10px;
+	font-size: 1em;
+	font-family: Verdana;
+	color: gray;
+	text-decoration: none;
+}
+
+.footer .block2 .settings {
+	margin-right: 2px;
+	font-size: 1em;
+	font-family: Verdana;
+	color: gray;
+	text-decoration: none;
+}
+
+.footer .block1 .advertising:hover {
+	text-decoration: underline;
+}
+
+.footer .block1 .business:hover {
+	text-decoration: underline;
+}
+
+.footer .block1 .about:hover {
+	text-decoration: underline;
+}
+
+.footer .block2 .privacy:hover {
+	text-decoration: underline;
+}
+
+.footer .block2 .terms:hover {
+	text-decoration: underline;
+}
+
+.footer .block2 .settings:hover {
+	text-decoration: underline;
+}
