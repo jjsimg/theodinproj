@@ -5,7 +5,7 @@
 div.header {
 	padding: 10px;
 	top: 2px;
-	font-family: Verdana;
+	font-family: "Verdana", Helvetica, Arial;
 	font-size: .84em;
 	float: right;
 	width: 280px;
@@ -46,7 +46,6 @@ img.bell {
 	float: left;
 }
 
-
 .header a.gmail:hover {
 	text-decoration: underline;
 }
@@ -82,7 +81,9 @@ div.box2 {
 	top: 0; 
 	left: 0;
 	width: 500px;
-	height: 44px;
+	height: 38px;
+	font-size: 1.2em;
+	font-family: 
 }
 
 .box2 a img.mic {
@@ -100,16 +101,31 @@ div.box2 {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
+	font-weight: bold;
+	font-family: "Verdana", Helvetica, Arial;
+	font-size: .8em;
 }
 
 .box3 .lbutton {
 	background-color: #e0e0e0; 
 	padding: 15px;
+	color: gray;
 }
 
 .box3 .rbutton {
 	background-color: #e0e0e0;
 	padding: 15px;
+	color: gray;
+}
+
+.box3 .lbutton:hover {
+	border: 1px solid #c6c6c6;
+	color: #222;
+}
+
+.box3 .rbutton:hover {
+	border: 1px solid #c6c6c6;
+	color: #222;
 }
 
 .box4 {
@@ -117,6 +133,16 @@ div.box2 {
 	top: 60%;
 	left: 50%;
 	transform: translate(-50%,-50%);
+	font-family: "Verdana", Helvetica, Arial;
+	font-size: .8em;
+}
+
+.box4 .french {
+	text-decoration: none;
+}
+
+.box4 .french:hover {
+	text-decoration: underline;
 }
 
 .logo {
@@ -149,7 +175,7 @@ div.footer {
 .footer .block1 .advertising {
 	margin-left: 10px;
 	font-size: 1em;
-	font-family: Verdana;
+	font-family: "Verdana", Helvetica, Arial;
 	color: gray;
 	text-decoration: none;
 }
@@ -157,7 +183,7 @@ div.footer {
 .footer .block1 .business {
 	margin-left: 10px;
 	font-size: 1em;
-	font-family: Verdana;
+	font-family: "Verdana", Helvetica, Arial;
 	color: gray;
 	text-decoration: none;
 }
@@ -165,7 +191,7 @@ div.footer {
 .footer .block1 .about {
 	margin-left: 10px;
 	font-size: 1em;
-	font-family: Verdana;
+	font-family: "Verdana", Helvetica, Arial;
 	color: gray;
 	text-decoration: none;
 }
@@ -173,7 +199,7 @@ div.footer {
 .footer .block2 .privacy {
 	margin-right: 10px;
 	font-size: 1em;
-	font-family: Verdana;
+	font-family: "Verdana", Helvetica, Arial;
 	color: gray;
 	text-decoration: none;
 }
@@ -181,7 +207,7 @@ div.footer {
 .footer .block2 .terms {
 	margin-right: 10px;
 	font-size: 1em;
-	font-family: Verdana;
+	font-family: "Verdana", Helvetica, Arial;
 	color: gray;
 	text-decoration: none;
 }
@@ -189,7 +215,7 @@ div.footer {
 .footer .block2 .settings {
 	margin-right: 2px;
 	font-size: 1em;
-	font-family: Verdana;
+	font-family: "Verdana", Helvetica, Arial;
 	color: gray;
 	text-decoration: none;
 }
