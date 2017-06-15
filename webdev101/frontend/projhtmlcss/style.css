@@ -2,17 +2,41 @@
 	margin: 0; padding: 0;
 }
 
-.Main {
-	text-align: center;
-	margin: 200px;
+div.logo {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: auto;
+	transform: translate(-50%,-50%);
 }
 
-#searchbar {
-	position: relative;
-	margin: 20px;
-	text-align: center;
+
+div.header {
+	padding: 10px;
+	top: 2px;
+	font-family: Verdana;
+	float: right;
 }
 
-input {
-	box-shadow: 0 2px 2px 0;
+.header .gmail {
+	margin: 2px;
 }
+
+.header .images {
+	margin: 2px;
+}
+
+.header .grid {
+	margin: 2px;
+}
+
+.header .signin {
+	margin: 2px;
+	width: 70px;
+	height: 30px;
+	color: white;
+	background-color: #4387fd;
+	border-color: #4387fd;
+}
+
+
