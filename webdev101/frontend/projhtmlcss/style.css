@@ -2,15 +2,6 @@
 	margin: 0; padding: 0;
 }
 
-div.box {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	margin-top: auto;
-	transform: translate(-50%,-50%);
-}
-
-
 div.header {
 	padding: 10px;
 	top: 2px;
@@ -33,6 +24,11 @@ div.header {
 	float: left;
 	color: gray;
 	text-decoration: none;
+}
+
+.header .bellouter {
+	margin: 6px 8px 8px 8px;
+	float: left;
 }
 
 img.bell {
@@ -63,13 +59,56 @@ img.bell {
 	text-decoration: underline;
 }
 
-.header .apps {
-	margin: 6px 8px 8px 8px;
-	float: left;
+div.box {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	margin-top: auto;
+	transform: translate(-50%,-50%);
+}
+
+div.box2 {
+	position: absolute;
+	vertical-align: middle
+	width: auto;
+	height: auto;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.box2 .search {
+	position: relative;
+	top: 0; 
+	left: 0;
+	width: 500px;
+	height: 44px;
+}
+
+.box2 a img.mic {
+	position: absolute;
+	top: 15%;
+	right: 0;
+	width: 35px;
+	height: auto;
+}
+
+.box3 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.box4 {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 }
 
 .logo {
-	width: 350px;
+	width: 400px;
 	height: auto;
 }
 
