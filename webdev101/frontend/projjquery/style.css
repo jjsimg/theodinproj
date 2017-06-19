@@ -1,21 +1,22 @@
+/* style borrowed from https://materializecss.com */
+
 * {
 	margin: 0; padding: 0;
 }
 
 body {
-	background: rgb(245, 237, 234); 
+	background-color: #26a69a;
 }
 
-#boardinput {
-	width: auto;
-	height: auto;
-	top: 40px;
+.row .custombutton {
+	background-color: #ee6e73;
+	font-size: 1.25em;
+	margin: 10px 10px;
+	text-align: center;
 }
-
-.custombutton {
-	margin: 20px;
-	font-family: 'Roboto',sans-serif;
-}
+ .row {
+ 	text-align: center;
+ }
 
 #pagetitle {
 	font-family: 'Alegreya Sans SC',sans-serif;
@@ -24,9 +25,15 @@ body {
 }
 
 #board {
+	position: absolute;
 	background-color: white;
-	width: 300px;
-	height: 300px;
+	width: 500px;
+	height: 500px;
 	border: solid;
 	border-width: 4px;
+	left: 50.2%;
+	top: 540px;
+	transform: translate(-50%,-50%);
+	border-color: #ee6e73;
+	border-width: 8px;
 }
