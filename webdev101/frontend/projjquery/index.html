@@ -8,23 +8,38 @@
 	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Roboto" rel="stylesheet">
 </head>
 <body>
-	<h1 id="pagetitle">Painter</h1>
-	<div class="container" id="boardinput">
-		<div class="row">
-			<div class="custombutton btn col s2 offset-s3 tooltipped" data-position="top" data-delay="20" data-tooltip="Choose between 16 pixels and 100 pixels">Grid Size</div>
-			<div class="custombutton btn col s2 tooltipped" data-position="top" data-delay="20" data-tooltip=>Black</div>
-			<div class="custombutton btn col s2 tooltipped" data-position="top" data-delay="20" data-tooltip=>White</div>
+	<ul id="dropdowncolors" class="dropdown-content">
+		<li><a href="#">Black</a></li>
+		<li><a href="#">White</a></li>
+		<li><a href="#">Pink</a></li>
+		<li><a href="#">Green</a></li>
+		<li><a href="#">Rainbow</a></li>
+	</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Etch-a-Sketch<i class="tiny material-icons">mode-edit</i></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="#" class="tooltipped dropdown-button menuitem" data-activates="dropdowncolors" data-position="left" data-tooltip="Choose a color">Color<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a href="#" class="tooltipped menuitem" data-position="left" data-tooltip="Reset the board">Reset</a></li>
+			</ul>
 		</div>
-		<div class="row">
-			<div class="custombutton btn col s2 offset-s4">Colour</div>
-			<div class="custombutton btn col s2">Reset</div>
-		</div>
-	</div>
+	</nav>
 	<div id="board">
-		<div></div>
+		<table>
+			<tr id="board1">
+				
+			</tr>
+		</table>
+	</div>
+	<div class="row">
+		<form action="#" class="col s2 offset-s5">
+			<p class="range-field" style="text-align: center">
+				<input type="range" id="gridsizepicker" min="16" max="100">Pick a grid size between 16 and 100
+			</p>
+		</form>
 	</div>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	 <script type="text/javascript" src="materialize/js/materialize.min.js"></script><!-- Probably won't use this-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script><!-- Probably won't use this-->
 	<script type="text/javascript" async="async" src="main.js"></script>
 </body>
 </html>
