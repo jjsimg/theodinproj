@@ -19,6 +19,7 @@
 		<div class="nav-wrapper">
 			<a class="brand-logo">Etch-a-Sketch<i class="tiny material-icons">mode-edit</i></a>
 			<ul class="right hide-on-med-and-down">
+				<li><a href="#" class="tooltipped menuitem" data-position="left" data-tooltip="Choose a grid size between 16 and 100">Grid</a></li>
 				<li><a href="#" class="tooltipped dropdown-button menuitem" data-activates="dropdowncolors" data-position="left" data-tooltip="Choose a color">Color<i class="material-icons right">arrow_drop_down</i></a></li>
 				<li><a href="#" class="tooltipped menuitem" data-position="left" data-tooltip="Reset the board">Reset</a></li>
 			</ul>
@@ -27,13 +28,7 @@
 	<div id="board">
 		<!--divs will get inserted here-->
 	</div>
-	<div class="row">
-		<form action="#" class="col s2 offset-s5">
-			<p class="range-field" style="text-align: center">
-				<input type="range" id="gridsizepicker" min="16" max="100">Pick a grid size between 16 and 100
-			</p>
-		</form>
-	</div>
+	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script><!-- Probably won't use this-->
 	<script type="text/javascript" async="async" src="main.js"></script>

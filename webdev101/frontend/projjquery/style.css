@@ -33,3 +33,8 @@ body {
 .green {
 	background-color: green;
 }
+
+div.col.s1 {
+	position: absolute;
+
+}
