@@ -14,7 +14,6 @@ body {
 
 #board {
 	position: absolute;
-	background-color: white;
 	width: 600px;
 	height: 600px;
 	border: solid;
@@ -27,7 +26,7 @@ body {
 }
 
 .boardtile {
-	background-color: red;
+	background-color: orange;
 	float: left;
 }
 
