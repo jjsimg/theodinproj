@@ -1,9 +1,7 @@
 $(document).ready(function(){
 	$(".dropdown-button").dropdown();
-	gridsize=$('#board').css('width')/5;
-	console.log(gridsize);
 	
-	var grid=20;
+	var grid=$('#gridsizepicker').val();;
 	var ht=584/grid;
 	var wth=584/grid;
 	for (i=0; i<grid; i++) {
