@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	$(".dropdown-button").dropdown();
 	
-	var grid=$('#gridsizepicker').val();;
+	//var grid=$('#gridsizepicker').val();;
+	var grid=20;
 	var ht=584/grid;
 	var wth=584/grid;
 	for (i=0; i<grid; i++) {
@@ -10,4 +11,7 @@ $(document).ready(function(){
 			$('#brow'+i).append('<div class="boardtile" style="height:'+ht+'px;width:'+wth+'px"></div>')
 		}
 	}
+	$('#board').on('mouseover', '#brow', function(){
+		$(this).addClass('.green')
+	});
 });
