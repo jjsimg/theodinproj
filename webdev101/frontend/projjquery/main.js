@@ -3,13 +3,23 @@ $(document).ready(function(){
 		belowOrigin: true
 	});
 
+	function genGrid(inp){
+		if (inp>=16 && inp<=100) {
+			var ht=584/inp;
+			var wth=584/inp;
+			$('#outer').append('<div id="board"></div>')
+			for (i=0; i<inp; i++) {
+				$('#board').append('<div class="boardtile" id="brow'+i+'"'+' style="height:'+ht+'px;width:'+wth+'px"></div>');
+				for (j=0; j<inp; j++) {
+					$('#brow'+i).append('<div class="boardtile" style="height:'+ht+'px;width:'+wth+'px"></div>');
+				};
+			};
+		};
+	};
+
 	$('.dropdown-content').on('click', function(){
 		$('ul').on('click', 'li', function(){
 			var idcolor=$(this).attr('id');
-			if (idcolor==='#rainbow') {
-				var randnum=Math.floor(Math.random()*255)+1;
-				idcolor.css({'background-color': 'rgb('+randnum+','+randnum+','+randnum+')'});
-			}
 			$('#board').on('mouseover', '.boardtile', function(){
 				$(this).attr('id', idcolor);
 			});
@@ -23,17 +33,8 @@ $(document).ready(function(){
 			var blength=$('#outer').find('#board').length;
 			$('#board').remove()
 		}
-		//Maintain a gridsize between 16x16 and 100x100
-		if (grid>=16 && grid<=100) {
-			var ht=584/grid;
-			var wth=584/grid;
-			$('#outer').append('<div id="board"></div>')
-			for (i=0; i<grid; i++) {
-				$('#board').append('<div class="boardtile" id="brow'+i+'"'+' style="height:'+ht+'px;width:'+wth+'px"></div>');
-				for (j=0; j<grid; j++) {
-					$('#brow'+i).append('<div class="boardtile" style="height:'+ht+'px;width:'+wth+'px"></div>');
-				};
-			};
-		};
+		genGrid(grid);
 	});
+
+	
 });
