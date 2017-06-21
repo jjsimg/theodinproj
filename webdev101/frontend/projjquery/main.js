@@ -6,6 +6,10 @@ $(document).ready(function(){
 	$('.dropdown-content').on('click', function(){
 		$('ul').on('click', 'li', function(){
 			var idcolor=$(this).attr('id');
+			if (idcolor==='#rainbow') {
+				var randnum=Math.floor(Math.random()*255)+1;
+				idcolor.css({'background-color': 'rgb('+randnum+','+randnum+','+randnum+')'});
+			}
 			$('#board').on('mouseover', '.boardtile', function(){
 				$(this).attr('id', idcolor);
 			});
