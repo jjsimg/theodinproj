@@ -12,7 +12,7 @@ body {
 	font-size: 1.25em;
 }
 
-#board {
+#outer {
 	position: absolute;
 	width: 600px;
 	height: 600px;
@@ -30,11 +30,23 @@ body {
 	float: left;
 }
 
-.green {
-	background-color: green;
-}
-
 div.col.s1 {
 	position: absolute;
 
+}
+
+#black {
+	background-color: black;
+}
+
+#white {
+	background-color: white;
+}
+
+#pink {
+	background-color: #ee6e73;
+}
+
+#green {
+	background-color: green;
 }
