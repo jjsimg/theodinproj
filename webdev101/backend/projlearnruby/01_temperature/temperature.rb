@@ -2,7 +2,7 @@
 def ftoc(temp)
 	temp=Float(temp)
 	temp=(temp-Float(32))*Float(5)/Float(9)
-	Integer(temp)==temp ? temp=Integer(temp) : temp=Float("%.1f" % temp)
+	Integer(temp)==temp ? temp=1 : temp=1
 end
 
 def ctof(temp)
