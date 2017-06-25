@@ -45,6 +45,10 @@ describe "#translate" do
     expect(translate("three")).to eq("eethray")
   end
 
+  it "translates a word beginning with a letter u" do
+    expect(translate("urban")).to eq("urbanay")
+  end
+
   it "counts 'sch' as a single phoneme" do
     s = translate("school")
     expect(s).to eq("oolschay")
@@ -69,4 +73,15 @@ describe "#translate" do
   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
   # * retain the punctuation from the original phrase
 
+  it "keeps the first letter of a capitalized word capitalized" do
+    s="Bobby Hitchens is from Denmark"
+    t="Obbybay Itchenshay isay omfray Enmarkday"
+    expect(translate(s)).to eq(t)
+  end
+
+  it "retains the punctuation from the original phrase" do
+    s="Hi! Are you... lost?"
+    t="Ihay! Areay ouyay... ostlay?"
+    expect(translate(s)).to eq(t) 
+  end
 end

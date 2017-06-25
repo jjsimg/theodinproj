@@ -2,7 +2,17 @@
 def translate(phrase)
 	vow="aeiou".split("")
 	newphrase=""
-	phrase.split.each {|word| (vow.include? word[0]) ? newphrase+=word+"ay" : newphrase+=word[1..word.length]+word[0]+"ay"}
-	phrase.split.each {|word| word.each {|letter|}}
-	newphrase
+	phrase.split.each do |word|
+		cons=""
+		word.split("").each_with_index do |letter,index| 
+			if letter=="u" and index>0 or not vow.include? letter
+				cons+=letter
+			elsif vow.include? letter
+				newphrase+=word[index..word.length]+cons+"ay"+" "
+				break
+			end
+		end
+	end
+	newphrase.chomp(" ")
 end
+# puts translate("Bobby Hitchens is from Denmark")
