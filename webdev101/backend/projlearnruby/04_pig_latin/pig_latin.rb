@@ -11,7 +11,7 @@ def translate(phrase)
 			if letter=="u" and index>0 or not vow.include? letter
 				cons+=letter
 			else
-				if capword
+				if capword #this condition is never evaluated as true
 					newphrase+=word[index..word.length].capitalize+cons.downcase+"ay"+" "
 					break
 				else
