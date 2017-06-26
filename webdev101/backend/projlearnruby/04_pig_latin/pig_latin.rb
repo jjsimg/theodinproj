@@ -5,19 +5,22 @@ def translate(phrase)
 	phrase.split.each do |word|
 		cons=""
 		word.split("").each_with_index do |letter,index|
-			index==0 and letter==letter.upcase ? capword=true : capword=false
-
+			if index==0
+				letter==letter.upcase ? capword=true : capword=false
+			end
 			if letter=="u" and index>0 or not vow.include? letter
 				cons+=letter
-			elsif vow.include? letter and capword #why is it not evaluating this conditional as true?
-				newphrase+=word[index..word.length].downcase.capitalize+cons+"ay"+" "
-				break
-			elsif vow.include? letter
-				newphrase+=word[index..word.length]+cons+"ay"+" "
-				break
+			else
+				if capword
+					newphrase+=word[index..word.length].capitalize+cons.downcase+"ay"+" "
+					break
+				else
+					newphrase+=word[index..word.length]+cons+"ay"+" "
+					break
+				end
 			end
 		end
 	end
 	newphrase.chomp(" ")
 end
-# puts translate("Bobby Hitchens is from Denmark")
+puts translate("Bobby Hitchens is from Denmark")
