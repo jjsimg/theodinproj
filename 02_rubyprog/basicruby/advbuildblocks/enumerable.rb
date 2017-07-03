@@ -31,6 +31,12 @@ module Enumerable
 	end
 
 	def my_any?
+		for i in 0...self.length
+			if yield(self[i])==true
+				return true
+			end
+		end
+		false
 	end
 
 	def my_none?
