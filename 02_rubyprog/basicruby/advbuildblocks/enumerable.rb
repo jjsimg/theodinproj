@@ -10,4 +10,48 @@ module Enumerable
 			yield(self[i],i)
 		end
 	end
+
+	def my_select
+		result=[]
+		for i in 0...self.length
+			if yield(self[i])
+				result.push(self[i])
+			end
+		end
+		result
+	end
+
+	def my_all?
+		for i in 0...self.length
+			if yield(self[i])==false
+				return false
+			end
+		end
+		true
+	end
+
+	def my_any?
+	end
+
+	def my_none?
+	end
+
+	def my_count
+	end
+
+	def my_map
+	end
+
+	def my_inject
+	end
+
+	def multiply_els
+		# must use #my_inject method
+	end
+
+	def my_map_proc
+	end
+
+	def my_map_proc_block
+	end
 end
