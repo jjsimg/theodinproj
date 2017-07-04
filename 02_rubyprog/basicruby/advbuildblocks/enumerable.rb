@@ -70,22 +70,37 @@ module Enumerable
 		end
 	end
 
-	def my_inject
+	def my_inject(input=nil)
+		if input==nil
+			for i in 0...self.length-1
+				if i==0
+					accum=yield(self[i],self[i+1])
+				else
+					accum=yield(accum,self[i+1])
+				end
+			end
+		else
+			for i in 0...self.length-1
+				if i==0
+					accum=yield(input,yield(self[i],self[i+1]))
+				else
+					accum=yield(accum,self[i+1])
+				end
+			end
+		end
+		accum
 	end
 
 	def multiply_els
 		# must use #my_inject method
 	end
 
-	def my_map(&block)
+	def my_map
 		# must take block and proc
-		if block_given?
-			for i in 0...self.length
-				yield(self[i])
-			end
-		else 
-			block=Proc.new(self)
-			yield(block)
+		result=[]
+		for i in 0...self.length
+			result.push(yield(self[i]))
 		end
+		result
 	end
 end

@@ -12,18 +12,24 @@ array1=[1,5,7,9,3,2,1]
 hash1={'item1':'horse', 'item2':'giraffe', 'item3':'monkey'}
 a=My_methods.new(array1)
 
-d=Proc.new do |x|
-	x+2
+# d=Proc.new do |x|
+# 	x+2
+# end
+
+# f=lambda do |x|
+# 	x+3
+# end
+
+# c=a.items.inject
+
+# print c
+
+c=a.items.inject do |product,n| 
+	product*n
 end
-
-f=lambda do |x|
-	x+3
-end
-
-c=a.items.map(&d)
-
 print c
 
-b=a.items.my_map(&d)
-
+b=a.items.my_inject do |product,n| 
+	product*n
+end
 print b
