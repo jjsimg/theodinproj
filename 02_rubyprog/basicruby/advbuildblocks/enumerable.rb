@@ -32,7 +32,7 @@ module Enumerable
 
 	def my_any?
 		for i in 0...self.length
-			if yield(self[i])==true
+			if yield(self[i])
 				return true
 			end
 		end
@@ -40,9 +40,34 @@ module Enumerable
 	end
 
 	def my_none?
+		for i in 0...self.length
+			if yield(self[i])
+				return false
+			end
+		end
+		true
 	end
 
-	def my_count
+	def my_count(input=nil)
+		if block_given?
+			count=0
+			for i in 0...self.length
+				if yield(self[i])
+					count+=1
+				end
+			end
+			count
+		elsif input.is_a? Integer
+			count=0
+			for i in 0...self.length
+				if self[i]==input
+					count+=1
+				end
+			end
+			count
+		elsif input==nil
+			self.length
+		end
 	end
 
 	def my_map
