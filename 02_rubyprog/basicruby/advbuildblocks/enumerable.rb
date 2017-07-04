@@ -70,9 +70,6 @@ module Enumerable
 		end
 	end
 
-	def my_map
-	end
-
 	def my_inject
 	end
 
@@ -80,9 +77,15 @@ module Enumerable
 		# must use #my_inject method
 	end
 
-	def my_map_proc
-	end
-
-	def my_map_proc_block
+	def my_map(&block)
+		# must take block and proc
+		if block_given?
+			for i in 0...self.length
+				yield(self[i])
+			end
+		else 
+			block=Proc.new(self)
+			yield(block)
+		end
 	end
 end
