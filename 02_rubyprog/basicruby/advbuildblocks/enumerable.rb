@@ -72,27 +72,21 @@ module Enumerable
 
 	def my_inject(input=nil)
 		if input==nil
-			for i in 0...self.length-1
-				if i==0
-					accum=yield(self[i],self[i+1])
-				else
-					accum=yield(accum,self[i+1])
-				end
-			end
+			accum=yield(self[0],self[1])
 		else
-			for i in 0...self.length-1
-				if i==0
-					accum=yield(input,yield(self[i],self[i+1]))
-				else
-					accum=yield(accum,self[i+1])
-				end
-			end
+			accum=yield(input,yield(self[0],self[1]))
+		end
+		for i in 1...self.length-1
+			accum=yield(accum,self[i+1]) 
 		end
 		accum
 	end
 
 	def multiply_els
 		# must use #my_inject method
+		self.my_inject do |product,x|
+			product*x
+		end
 	end
 
 	def my_map

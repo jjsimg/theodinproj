@@ -8,7 +8,7 @@ class My_methods
 	end
 end
 
-array1=[1,5,7,9,3,2,1]
+array1=[-2,5,7,9,3,6,1]
 hash1={'item1':'horse', 'item2':'giraffe', 'item3':'monkey'}
 a=My_methods.new(array1)
 
@@ -33,3 +33,6 @@ b=a.items.my_inject do |product,n|
 	product*n
 end
 print b
+
+d=a.items.multiply_els
+print d
