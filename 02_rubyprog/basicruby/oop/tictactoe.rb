@@ -30,7 +30,18 @@ class TicTacToe
 	end
 
 	def self.game_over
-
+		if @@board[0]=="x" and @@board[1]=="x" and @@board[2]=="x"
+			true
+		if @@board[3]=="x" and @@board[4]=="x" and @@board[5]=="x"
+			true
+		if @@board[6]=="x" and @@board[7]=="x" and @@board[8]=="x"
+			true
+		if @@board[0]=="o" and @@board[1]=="o" and @@board[2]=="o"
+			true
+		if @@board[3]=="o" and @@board[4]=="o" and @@board[5]=="o"
+			true
+		if @@board[6]=="o" and @@board[7]=="o" and @@board[8]=="o"
+			true
 	end
 	# Loop through this
 	def self.choice
@@ -40,6 +51,7 @@ class TicTacToe
 		ocount=@@board.count("o")
 		print "Give me your choice of where to go: "
 		move=gets.chomp.to_i
+
 		@@board[move]="o" if xcount>ocount
 		@@board[move]="x" if xcount==ocount
 	end
