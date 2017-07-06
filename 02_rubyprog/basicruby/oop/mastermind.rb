@@ -43,6 +43,8 @@ class Mastermind
     (1..5).each do |x|
       @@mastermind.push(rand(1..7))
     end
+    # this doesn't do what I want yet
+    (0...5).map { ('a'..'z').to_a[rand(26)] }
   end
 
   def self.choice
