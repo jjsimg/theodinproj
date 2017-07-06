@@ -31,19 +31,41 @@ class TicTacToe
 
 	def self.game_over
 		if @@board[0]=="x" and @@board[1]=="x" and @@board[2]=="x"
-			true
-		if @@board[3]=="x" and @@board[4]=="x" and @@board[5]=="x"
-			true
-		if @@board[6]=="x" and @@board[7]=="x" and @@board[8]=="x"
-			true
-		if @@board[0]=="o" and @@board[1]=="o" and @@board[2]=="o"
-			true
-		if @@board[3]=="o" and @@board[4]=="o" and @@board[5]=="o"
-			true
-		if @@board[6]=="o" and @@board[7]=="o" and @@board[8]=="o"
-			true
+		  true
+		elsif @@board[3]=="x" and @@board[4]=="x" and @@board[5]=="x"
+		  true
+		elsif @@board[6]=="x" and @@board[7]=="x" and @@board[8]=="x"
+		  true
+		elsif @@board[0]=="x" and @@board[3]=="x" and @@board[6]=="x"
+		  true
+		elsif @@board[1]=="x" and @@board[4]=="x" and @@board[7]=="x"
+      true
+    elsif @@board[2]=="x" and @@board[5]=="x" and @@board[8]=="x"
+      true
+    elsif @@board[0]=="x" and @@board[4]=="x" and @@board[8]=="x"
+      true
+    elsif @@board[2]=="x" and @@board[4]=="x" and @@board[6]=="x"
+      true
+		elsif @@board[0]=="o" and @@board[1]=="o" and @@board[2]=="o"
+		  true
+		elsif @@board[3]=="o" and @@board[4]=="o" and @@board[5]=="o"
+		  true
+		elsif @@board[6]=="o" and @@board[7]=="o" and @@board[8]=="o"
+		  true
+    elsif @@board[0]=="o" and @@board[3]=="o" and @@board[6]=="o"
+      true
+    elsif @@board[1]=="o" and @@board[4]=="o" and @@board[7]=="o"
+      true
+    elsif @@board[2]=="o" and @@board[5]=="o" and @@board[8]=="o"
+      true
+    elsif @@board[0]=="o" and @@board[4]=="o" and @@board[8]=="o"
+      true
+    elsif @@board[2]=="o" and @@board[4]=="o" and @@board[6]=="o"
+      true
+    end
+      false
 	end
-	# Loop through this
+	
 	def self.choice
 		p1="x"
 		p2="o"
@@ -57,16 +79,16 @@ class TicTacToe
 	end
 	
 	welcome
-	# until game_over
-	choice
-	show
-	choice
-	show
-	choice
-	show
-	choice
-	show
+  game_over=false
+  while game_over==false
+    choice
+    show
+    game_over
+  end
 	# end
+  if game_over
+    puts "The game's over!"
+  end
 	
 end
 
