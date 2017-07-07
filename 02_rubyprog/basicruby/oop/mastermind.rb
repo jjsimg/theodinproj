@@ -15,42 +15,11 @@ class Mastermind
     puts ""
   end
 
-  # def self.gameboard
-  #   puts ""
-  #   puts "    "+"X-X-X-X-X----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"o-o-o-o-o----------"
-  #   puts "    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
-  #   puts ""
-  # end
-
-
-  # def self.initgameboard
-  #   @@mychoice=['o','o','o','o','o']
-  #   @@check=[]
-  #   if @@mychoice[0]==@@mastermind[0]
-  #     @@check.push(2)
-  #   elsif @@mychoice.count(1..5.each { |x| @@mastermind[x] })
-  #     count+=1
-  #   elsif
-  #   end
-  # end
-
-
-
   def self.makeboard
+    puts ""
+    puts "    "+"X-X-X-X-X----------"
     @@counter.each_with_index do |x,idx1|
-      if idx1==0
-        puts ""
-        puts "    "+"X-X-X-X-X----------"
-      elsif @@counter[idx1]=='x'
+      if @@counter[idx1]=='x'
         puts "    "+"*-*-*-*-*----------" # if player hasn't made a choice at this line yet
       elsif @@counter[idx1]=='*'
         mc0=@@mychoice[0]
@@ -60,13 +29,10 @@ class Mastermind
         mc4=@@mychoice[4]
         f="    "+"#{mc0}-#{mc1}-#{mc2}-#{mc3}-#{mc4}----------"
         @@pastchoice.unshift(f)
-        puts f
         @@counter[idx1-1]='*'
         @@counter.pop
-        if @@pastchoice.size>1
-          @@pastchoice.each do |item|
-            puts item
-          end
+        @@pastchoice.each do |item|
+          puts item
         end
       end
     end
