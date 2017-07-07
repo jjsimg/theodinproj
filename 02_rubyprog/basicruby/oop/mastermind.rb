@@ -1,6 +1,7 @@
 class Mastermind
   @@counter=['x','x','x','x','x','x','x','x','x','x']
   @@mychoice=""
+  @@pastchoice=[]
 
   def self.game_over
   end
@@ -45,15 +46,31 @@ class Mastermind
 
 
   def self.makeboard
-    (1..11).each_with_index do |x,idx|
-      if idx==0
-        puts "    "+"X-X-X-X-X----------"
-      elsif @@counter[idx-1]=='x'
-        puts "    "+"o-o-o-o-o----------" # if player hasn't made a choice at this line yet
-      else
-        puts "    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
-        @@counter[-idx]='x'
-        @@counter[-idx+1]='o'
+    catch (:done) do
+      (1..11).each_with_index do |x,idx|
+        if idx==0
+          puts ""
+          puts "    "+"X-X-X-X-X----------"
+        elsif @@counter[idx-1]=='x'
+          puts "    "+"*-*-*-*-*----------" # if player hasn't made a choice at this line yet
+        elsif @@counter[idx-1]=='*'
+          mc0=@@mychoice[0]
+          mc1=@@mychoice[1]
+          mc2=@@mychoice[2]
+          mc3=@@mychoice[3]
+          mc4=@@mychoice[4]
+          f="    "+"#{mc0}-#{mc1}-#{mc2}-#{mc3}-#{mc4}----------"
+          @@pastchoice.push(f)
+          puts f
+          @@counter[idx-1]='**'
+          @@counter[idx-2]='*'
+        elsif @@counter[idx-1]=="**"
+          # while loop? and keep iterating until array is done printing contents then use break
+          @@pastchoice.each_with_index do |i,idx|
+            puts @@pastchoice[idx]
+            throw :done if idx==@@pastchoice.size-1
+          end
+        end
       end
     end
   end
@@ -82,8 +99,8 @@ class Mastermind
     puts "-----------------------------------------------"
     puts "Make sure to select letters separated by spaces"
     @@mychoice=gets.split
-    if not @@counter.include?('o')
-      @@counter=['x','x','x','x','x','x','x','x','x','o']
+    if not @@counter.include?('*')
+      @@counter=['x','x','x','x','x','x','x','x','x','*']
     end
     if game_over
       #do something
@@ -93,6 +110,10 @@ class Mastermind
 
   welcome
   randomize
+  makeboard
+  choice
+  makeboard
+  choice
   makeboard
   choice
   makeboard
