@@ -46,29 +46,26 @@ class Mastermind
 
 
   def self.makeboard
-    catch (:done) do
-      (1..11).each_with_index do |x,idx|
-        if idx==0
-          puts ""
-          puts "    "+"X-X-X-X-X----------"
-        elsif @@counter[idx-1]=='x'
-          puts "    "+"*-*-*-*-*----------" # if player hasn't made a choice at this line yet
-        elsif @@counter[idx-1]=='*'
-          mc0=@@mychoice[0]
-          mc1=@@mychoice[1]
-          mc2=@@mychoice[2]
-          mc3=@@mychoice[3]
-          mc4=@@mychoice[4]
-          f="    "+"#{mc0}-#{mc1}-#{mc2}-#{mc3}-#{mc4}----------"
-          @@pastchoice.push(f)
-          puts f
-          @@counter[idx-1]='**'
-          @@counter[idx-2]='*'
-        elsif @@counter[idx-1]=="**"
-          # while loop? and keep iterating until array is done printing contents then use break
-          @@pastchoice.each_with_index do |i,idx|
-            puts @@pastchoice[idx]
-            throw :done if idx==@@pastchoice.size-1
+    @@counter.each_with_index do |x,idx1|
+      if idx1==0
+        puts ""
+        puts "    "+"X-X-X-X-X----------"
+      elsif @@counter[idx1]=='x'
+        puts "    "+"*-*-*-*-*----------" # if player hasn't made a choice at this line yet
+      elsif @@counter[idx1]=='*'
+        mc0=@@mychoice[0]
+        mc1=@@mychoice[1]
+        mc2=@@mychoice[2]
+        mc3=@@mychoice[3]
+        mc4=@@mychoice[4]
+        f="    "+"#{mc0}-#{mc1}-#{mc2}-#{mc3}-#{mc4}----------"
+        @@pastchoice.unshift(f)
+        puts f
+        @@counter[idx1-1]='*'
+        @@counter.pop
+        if @@pastchoice.size>1
+          @@pastchoice.each do |item|
+            puts item
           end
         end
       end
