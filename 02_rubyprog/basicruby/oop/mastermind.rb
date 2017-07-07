@@ -1,5 +1,4 @@
 class Mastermind
-
   @@counter=['x','x','x','x','x','x','x','x','x','x']
 
   def self.game_over
@@ -72,14 +71,14 @@ class Mastermind
     # puts ""
     # line[i]="    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
 
-  def self.makeboard
+  def self.makeboard(@@mychoice)
     (1..11).each_with_index do |x,idx|
       if idx==0
         puts "    "+"X-X-X-X-X----------"
       elsif @@counter[idx-1]=='x'
         puts "    "+"o-o-o-o-o----------" # if player hasn't made a choice at this line yet
       else
-        puts "    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------" # if currently on this line
+        puts "    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
         @@counter[-idx]='x'
         @@counter[-idx+1]='o'
       end
