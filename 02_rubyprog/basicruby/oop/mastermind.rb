@@ -1,5 +1,6 @@
 class Mastermind
   @@counter=['x','x','x','x','x','x','x','x','x','x']
+  @@mychoice=""
 
   def self.game_over
   end
@@ -13,35 +14,21 @@ class Mastermind
     puts ""
   end
 
-    # puts ""
-    # puts "    "+"X-X-X-X-X----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts ""
-
-  def self.gameboard
-    puts ""
-    puts "    "+"X-X-X-X-X----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"o-o-o-o-o----------"
-    puts "    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
-    puts ""
-  end
+  # def self.gameboard
+  #   puts ""
+  #   puts "    "+"X-X-X-X-X----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"o-o-o-o-o----------"
+  #   puts "    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
+  #   puts ""
+  # end
 
 
   # def self.initgameboard
@@ -55,23 +42,9 @@ class Mastermind
   #   end
   # end
 
-  
-    # puts ""
-    # puts "    "+"X-X-X-X-X----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # puts "    "+"o-o-o-o-o----------"
-    # line4= "    "+"o-o-o-o-o----------"
-    # line3= "    "+"o-o-o-o-o----------"
-    # line2= "    "+"o-o-o-o-o----------"
-    # line1= "    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
-    # puts ""
-    # line[i]="    "+"#{@@mychoice[0]}-#{@@mychoice[1]}-#{@@mychoice[2]}-#{@@mychoice[3]}-#{@@mychoice[4]}----------"
 
-  def self.makeboard(@@mychoice)
+
+  def self.makeboard
     (1..11).each_with_index do |x,idx|
       if idx==0
         puts "    "+"X-X-X-X-X----------"
@@ -119,8 +92,12 @@ class Mastermind
   end
 
   welcome
-  makeboard
   randomize
+  makeboard
+  choice
+  makeboard
+  choice
+  makeboard
   choice
 end
 
