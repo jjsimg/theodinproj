@@ -4,6 +4,13 @@ class Mastermind
   @@pastchoice=[]
 
   def self.game_over
+    # game_over when size of @@pastchoice==10
+    if @@pastchoice.size==10
+      puts "the game is over, you lose"
+      true
+    else 
+      false
+    end
   end
 
   def self.welcome
@@ -27,13 +34,20 @@ class Mastermind
         mc2=@@mychoice[2]
         mc3=@@mychoice[3]
         mc4=@@mychoice[4]
-        f="    "+"#{mc0}-#{mc1}-#{mc2}-#{mc3}-#{mc4}----------"
+
+        c0=@@clue[0]
+        c1=@@clue[1]
+        c2=@@clue[2]
+        c3=@@clue[3]
+        c4=@@clue[4]
+        f="    "+"#{mc0}-#{mc1}-#{mc2}-#{mc3}-#{mc4}-#{c0}-#{c1}-#{c2}-#{c3}-#{c4}"
         @@pastchoice.unshift(f)
         @@counter[idx1-1]='*'
         @@counter.pop
         @@pastchoice.each do |item|
           puts item
         end
+      puts @@mastermind
       end
     end
   end
@@ -65,23 +79,36 @@ class Mastermind
     if not @@counter.include?('*')
       @@counter=['x','x','x','x','x','x','x','x','x','*']
     end
-    if game_over
-      #do something
-    end
     @@mychoice
+  end
+
+  def self.checkchoice
+    @@clue=[0,0,0,0,0]
+    counter=rand(5)
+    t=@@mastermind
+    @@mychoice.each_with_index do |colour_pick,idx|
+      if colour_pick==t[idx]
+        @@clue[counter]=2
+        t.delete(colour_pick)
+        counter+=1
+        counter=0 if counter>4
+      elsif t.include? colour_pick
+        @@clue[counter]=1
+        t.delete(colour_pick)
+        counter+=1
+        counter=0 if counter>4
+      else
+        next
+      end
+    end
   end
 
   welcome
   randomize
-  makeboard
-  choice
-  makeboard
-  choice
-  makeboard
-  choice
-  makeboard
-  choice
-  makeboard
-  choice
+  until game_over
+    choice
+    checkchoice
+    makeboard
+  end
 end
 
