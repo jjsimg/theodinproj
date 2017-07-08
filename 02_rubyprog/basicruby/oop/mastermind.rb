@@ -85,7 +85,7 @@ class Mastermind
   def self.checkchoice
     @@clue=[0,0,0,0,0]
     counter=rand(5)
-    t=@@mastermind
+    t=@@mastermind.clone
     @@mychoice.each_with_index do |colour_pick,idx|
       if colour_pick==t[idx]
         @@clue[counter]=2
