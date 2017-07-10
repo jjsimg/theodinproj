@@ -185,6 +185,33 @@ def save_thank_you_letters(id,form_letter)
   end
 end
 
+def clean_phone_number(phone_number)
+  # fixed_phone_number=phone_number.gsub("/[.)(-]/","").split("")
+  # fixed_phone_number.delete(" ")
+  phone_number=phone_number.split("")
+  phone_number.delete(" ")
+  phone_number.delete(".")
+  phone_number.delete("(")
+  phone_number.delete(")")
+  phone_number.delete("-")
+  if phone_number[0]=='1' and phone_number.size==11
+    phone_number[1..10].join("")
+  elsif phone_number.size==10
+    phone_number.join("")
+  elsif phone_number[0]!='1' or phone_number.size<10
+    'bad number'
+  end
+end
+
+def get_date_and_time(date_and_time)
+  d_and_t = DateTime.strptime(date_and_time, "%m/%d/%Y %H:%M")
+end
+
+def time_of_day_targeting(register_date)
+  d_and_t = get_date_and_time(register_date)
+  d_and_t.strftime("registered at the %Hth hour")
+end
+
 template_letter = File.read "form_letter.erb"
 erb_template = ERB.new template_letter
 
@@ -196,5 +223,9 @@ contents.each do |row|
   legislators = legislators_by_zipcode(zipcode)
   form_letter = erb_template.result(binding)
 
-  save_thank_you_letters(id,form_letter)
+  phone_number = clean_phone_number(row[:homephone])
+  best_time = time_of_day_targeting(row[:regdate])
+  # save_thank_you_letters(id,form_letter)
+
+  puts "#{name} #{best_time}"
 end
