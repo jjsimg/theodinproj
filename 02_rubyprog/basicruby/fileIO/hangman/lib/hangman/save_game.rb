@@ -1,0 +1,2 @@
+class SaveGame
+end

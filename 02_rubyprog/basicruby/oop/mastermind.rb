@@ -1,11 +1,12 @@
 class Mastermind
-  @@counter=['x','x','x','x','x','x','x','x','x','x']
-  @@mychoice=""
-  @@pastchoice=[]
+  attr_accessor :counter, :mychoice, :pastchoice
+  counter=['x','x','x','x','x','x','x','x','x','x']
+  mychoice=""
+  pastchoice=[]
 
   def self.game_over
     # game_over when size of @@pastchoice==10
-    if @@pastchoice.size==10
+    if pastchoice.size==10
       puts "the game is over, you lose"
       true
     else 
@@ -25,15 +26,15 @@ class Mastermind
   def self.makeboard
     puts ""
     puts "    "+"X-X-X-X-X----------"
-    @@counter.each_with_index do |x,idx1|
-      if @@counter[idx1]=='x'
+    counter.each_with_index do |x,idx1|
+      if counter[idx1]=='x'
         puts "    "+"*-*-*-*-*----------" # if player hasn't made a choice at this line yet
-      elsif @@counter[idx1]=='*'
-        mc0=@@mychoice[0]
-        mc1=@@mychoice[1]
-        mc2=@@mychoice[2]
-        mc3=@@mychoice[3]
-        mc4=@@mychoice[4]
+      elsif counter[idx1]=='*'
+        mc0=mychoice[0]
+        mc1=mychoice[1]
+        mc2=mychoice[2]
+        mc3=mychoice[3]
+        mc4=mychoice[4]
 
         c0=@@clue[0]
         c1=@@clue[1]
@@ -87,18 +88,18 @@ class Mastermind
     counter=rand(5)
     t=@@mastermind.clone
     @@mychoice.each_with_index do |colour_pick,idx|
-      if colour_pick==t[idx]
-        @@clue[counter]=2
-        t.delete(colour_pick)
-        counter+=1
-        counter=0 if counter>4
-      elsif t.include? colour_pick
-        @@clue[counter]=1
-        t.delete(colour_pick)
-        counter+=1
-        counter=0 if counter>4
-      else
-        next
+      if t.include? colour_pick
+        if colour_pick==t[idx]
+          t.delete(colour_pick)
+          counter+=1
+          counter=0 if counter>4
+          @@clue[counter]=2
+        else
+          t.delete(colour_pick)
+          counter+=1
+          counter=0 if counter>4
+          @@clue[counter]=1
+        end
       end
     end
   end
