@@ -239,15 +239,15 @@ day_hash=Hash.new(0)
 template_letter = File.read "form_letter.erb"
 erb_template = ERB.new template_letter
 
-contents=CSV.open "event_attendees.csv", headers: true, header_converters: :symbol
+contents=CSV.open "full_event_attendees.csv", headers: true, header_converters: :symbol
 contents.each do |row|
   id = row[0]
   name = row[:first_name] # We can access column names with symbols
-  zipcode = clean_zipcode(row[:zipcode])
-  legislators = legislators_by_zipcode(zipcode)
-  form_letter = erb_template.result(binding)
+  # zipcode = clean_zipcode(row[:zipcode])
+  # legislators = legislators_by_zipcode(zipcode)
+  # form_letter = erb_template.result(binding)
 
-  phone_number = clean_phone_number(row[:homephone])
+  # phone_number = clean_phone_number(row[:homephone])
   hour = find_hour(row[:regdate])
   day = find_day(row[:regdate])
   hour_hash[hour]+=1
@@ -255,7 +255,7 @@ contents.each do |row|
 
   # save_thank_you_letters(id,form_letter)
 
-  puts "#{name} #{hour}"
+  # puts "#{name} #{hour}"
 end
 puts hour_hash.sort_by {|key,value| value}.reverse.to_h
 puts day_hash.sort_by {|key,value| value}.reverse.to_h
