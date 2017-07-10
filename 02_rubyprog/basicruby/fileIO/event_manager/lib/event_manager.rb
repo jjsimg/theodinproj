@@ -217,19 +217,19 @@ def find_day(register_date)
   day=d_and_t.strftime("%w")
   case day
   when "0"
-    return "Sunday"
+    :Sunday
   when "1"
-    "Monday"
+    :Monday
   when "2"
-    "Tuesday"
+    :Tuesday
   when "3"
-    "Wednesday"
+    :Wednesday
   when "4"
-    "Thursday"
+    :Thursday
   when "5"
-    "Friday"
+    :Friday
   when "6"
-    "Saturday"
+    :Saturday
   end
 end
 
@@ -257,6 +257,6 @@ contents.each do |row|
 
   puts "#{name} #{hour}"
 end
-puts hour_hash
-puts day_hash
+puts hour_hash.sort_by {|key,value| value}.reverse.to_h
+puts day_hash.sort_by {|key,value| value}.reverse.to_h
 
