@@ -207,10 +207,34 @@ def get_date_and_time(date_and_time)
   d_and_t = DateTime.strptime(date_and_time, "%m/%d/%Y %H:%M")
 end
 
-def time_of_day_targeting(register_date)
+def find_hour(register_date)
   d_and_t = get_date_and_time(register_date)
-  d_and_t.strftime("registered at the %Hth hour")
+  hour=d_and_t.strftime("%H")
 end
+
+def find_day(register_date)
+  d_and_t = get_date_and_time(register_date)
+  day=d_and_t.strftime("%w")
+  case day
+  when "0"
+    return "Sunday"
+  when "1"
+    "Monday"
+  when "2"
+    "Tuesday"
+  when "3"
+    "Wednesday"
+  when "4"
+    "Thursday"
+  when "5"
+    "Friday"
+  when "6"
+    "Saturday"
+  end
+end
+
+hour_hash=Hash.new(0)
+day_hash=Hash.new(0)
 
 template_letter = File.read "form_letter.erb"
 erb_template = ERB.new template_letter
@@ -224,8 +248,15 @@ contents.each do |row|
   form_letter = erb_template.result(binding)
 
   phone_number = clean_phone_number(row[:homephone])
-  best_time = time_of_day_targeting(row[:regdate])
+  hour = find_hour(row[:regdate])
+  day = find_day(row[:regdate])
+  hour_hash[hour]+=1
+  day_hash[day]+=1
+
   # save_thank_you_letters(id,form_letter)
 
-  puts "#{name} #{best_time}"
+  puts "#{name} #{hour}"
 end
+puts hour_hash
+puts day_hash
+
