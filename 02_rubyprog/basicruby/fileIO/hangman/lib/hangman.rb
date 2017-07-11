@@ -1,5 +1,6 @@
-require './somefile'
-require './somefile2'
+require './class/hangman_game'
+require './class/save_game'
+require './class/guess'
 
 # TODO
 
