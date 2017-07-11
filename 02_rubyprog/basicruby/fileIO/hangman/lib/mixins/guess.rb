@@ -1,7 +1,13 @@
 class Guess
 
-	#Count how many times the player can have for secret word
-  def letter
+  def incorrect_letter
+
+
   end
 
+  def display_secret
+    @secret.split("")
+    @secret_length = secret.size
+
+  end
 end

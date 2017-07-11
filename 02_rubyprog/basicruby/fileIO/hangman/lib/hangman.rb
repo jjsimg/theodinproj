@@ -3,7 +3,6 @@ require './lib/mixins/save_game'
 require './lib/mixins/guess'
 require './lib/mixins/draw'
 require './lib/mixins/hangman_module'
-include Hangman
 
 # TODO
 

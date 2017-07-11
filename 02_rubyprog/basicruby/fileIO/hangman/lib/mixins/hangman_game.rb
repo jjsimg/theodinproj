@@ -33,27 +33,28 @@ class HangmanGame
     puts "Computer is selecting a word..."
     @secret = get_word
     @guesses_left = Hangman::MAX_GUESSES
-    sleep(0.5)
+    sleep(0.4)
     puts "Word has been selected!"
   end
 
   def make_spaces(secret)
-    secret_guess = Array.new
-    secret.split("")
-    secret_length = secret.size
-    secret.each do |letter|
-      if guess == letter
-        secret_guess[letter] = " "
-      else
-        @guesses_left-=1
-        display_remaining_guesses
-        next
-      end
-    end
+    
   end
 
   def display_remaining_guesses
     puts "Your number of guesses is: #{@guesses_left}"
+  end
+
+  def show
+    puts "========================="
+    puts "========================="
+    puts "*******  Hangman  *******"
+    puts "========================="
+    puts "========================="
+    puts ""
+    puts ""
+    display_remaining_guesses
+    incorrect_letter unless incorrect_letter==nil
   end
 
   def get_word
