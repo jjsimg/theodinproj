@@ -4,44 +4,70 @@ class HangmanGame
 
 	def play
     # if file isn't already open
-		@dict = File.open('dictionary.txt','r')
+		@dict = File.open('sample_dictionary.txt','r')
     welcome_message
-    new_game?
-    
-    if save_game?
-      #serialize inputs
+    check_save
+    if check_save
+      load_game
+    else
+      new_game
+    end
+    while true
+
     end
 	end
 
-  def new_game?
+  def check_save
     if @selection == 'Y' or @selection =='y'
-      #load saved game
-    elsif @selection == 'N' or @selection == 'n'
-      #start new game
-  end
-
-  def save_game?
-    if player selects 'Y' or 'y'
       true
-    else
+    elsif @selection == 'N' or @selection == 'n'
       false
     end
   end
 
-  def pick_word
-    @secret = @dict.rand(size of dictionary)
-  end
-
-
-  def display_choice
-
-  end
-
-  def init_word
-    word_length = @secret.size
-    (1..word_length).each do |_|
-      puts "_"+" "
+  def load_game
+    @load_game = SaveGame.new
+    @load_game.each_with_index do |line,idx|
+      puts line if idx%1000==0
     end
+  end
+
+  def new_game
+    puts "Computer is selecting a word..."
+    @secret = get_word
+    # @guesses_left = Hangman::MAX_GUESSES
+    sleep(1)
+    puts "Word has been selected!"
+  end
+
+  def make_spaces(secret)
+    secret_guess = Array.new
+    secret.split("")
+    secret_length = secret.size
+    secret.each do |letter|
+      if guess == letter
+        secret_guess[letter] = " "
+      else
+        @guesses_left-=1
+        display_remaining_guesses
+        next
+      end
+    end
+  end
+
+  def display_remaining_guesses
+    puts "Your number of guesses is: #{@guesses_left}"
+  end
+
+  def get_word
+    @dictlist=Array.new
+    # dictionary_size = 61405
+    dictionary_size = 27
+    dictionary_random = rand(dictionary_size)
+    @dict.each do |word|
+      @dictlist << word
+    end
+    @dictlist[dictionary_random].chomp
   end
 
   def welcome_message

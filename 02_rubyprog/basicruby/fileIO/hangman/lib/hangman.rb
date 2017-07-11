@@ -1,6 +1,6 @@
-require './class/hangman_game'
-require './class/save_game'
-require './class/guess'
+require './lib/mixins/hangman_game'
+require './lib/mixins/save_game'
+require './lib/mixins/guess'
 
 # TODO
 
