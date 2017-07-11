@@ -1,6 +1,9 @@
 require './lib/mixins/hangman_game'
 require './lib/mixins/save_game'
 require './lib/mixins/guess'
+require './lib/mixins/draw'
+require './lib/mixins/hangman_module'
+include Hangman
 
 # TODO
 
@@ -27,5 +30,5 @@ Must use serialization.
 6. (Optional) Add AI.
 =end
 
-Hangman = HangmanGame.new
-Hangman.play
+my_game = HangmanGame.new
+my_game.play

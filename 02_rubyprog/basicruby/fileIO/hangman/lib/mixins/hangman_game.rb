@@ -1,7 +1,6 @@
 class HangmanGame
 
 
-
 	def play
     # if file isn't already open
 		@dict = File.open('sample_dictionary.txt','r')
@@ -12,9 +11,7 @@ class HangmanGame
     else
       new_game
     end
-    while true
-
-    end
+    
 	end
 
   def check_save
@@ -35,8 +32,8 @@ class HangmanGame
   def new_game
     puts "Computer is selecting a word..."
     @secret = get_word
-    # @guesses_left = Hangman::MAX_GUESSES
-    sleep(1)
+    @guesses_left = Hangman::MAX_GUESSES
+    sleep(0.5)
     puts "Word has been selected!"
   end
 
@@ -82,7 +79,6 @@ class HangmanGame
     puts "(Y)es"
     puts "or"
     puts "(N)o"
-    puts ""
     puts ""
     puts ""
     @selection = gets.chomp
