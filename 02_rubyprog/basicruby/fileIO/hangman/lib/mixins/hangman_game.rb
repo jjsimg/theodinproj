@@ -12,9 +12,9 @@ class HangmanGame
     else
       new_game
     end
-    show
-    show
-    show
+    while still_guessing?
+      show
+    end
 	end
 
   def check_save
@@ -51,8 +51,11 @@ class HangmanGame
     puts "========================="
     puts ""
     puts ""
-    @guessing.display_remaining(@guesses_left)
-    @guessing.check_secret
+    @guessing.display_remaining_guesses(@guesses_left)
+    @updated_secret = @guessing.check_secret
+    @guessing.wrong_guesses
+    @guesses_left-=1
+    puts "here is the secret: #{@updated_secret}"
   end
 
   def get_word
@@ -64,6 +67,16 @@ class HangmanGame
       @dictlist << word
     end
     @dictlist[dictionary_random].chomp
+  end
+
+  def still_guessing?
+    if @guesses_left > 0
+      true
+    end
+    @updated_secret.each do |elem|
+      false if elem=='_'
+      break
+    end
   end
 
   def welcome_message
