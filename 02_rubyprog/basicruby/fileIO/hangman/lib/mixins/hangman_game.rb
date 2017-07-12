@@ -14,7 +14,9 @@ class HangmanGame
       new_game
     end
     while still_guessing?
-      show
+      banner
+      calculate
+      @guesses_left -= 1
       if player_win?
         winning_message
         break
@@ -51,7 +53,7 @@ class HangmanGame
   end
 
 
-  def show
+  def banner
     puts "========================="
     puts "========================="
     puts "*******  Hangman  *******"
@@ -59,12 +61,15 @@ class HangmanGame
     puts "========================="
     puts ""
     puts ""
+  end
+
+  def calculate
     @guessing.display_remaining_guesses(@guesses_left)
     @updated_secret = @guessing.check_secret
     @guessing.wrong_guesses
-    @guesses_left-=1
     puts "here is the secret: #{@updated_secret}" # Delete later
   end
+
 
   def get_word
     @dictlist=Array.new
