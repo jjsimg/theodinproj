@@ -1,29 +1,36 @@
 class Guess
-  def initialize
-    @guesses = Array.new
-    @secret_array = Array.new
+
+  def initialize(secret_word)
+    @secret_word = secret_word
+    @wrong_guesses = Array.new
   end
 
-  def display_remaining_guesses
+  def display_letters_guessed
     # puts "Letters used: #{guess_letter}"
     puts ""
-    print "What letter do you pick? "
+    print "What letter will you pick? "
     user_input = gets.chomp
-    @guesses << user_input
   end
 
-  def display_secret(secret_word, guesses_remaining)
+  def display_remaining(guesses_remaining)
     puts "Your number of guesses is: #{guesses_remaining}"
-    secret = secret_word.split("")
-    secret.each do
-      @secret_array << "_" + " "
-    end
-    @secret_array.pop
-    puts @secret_array.join
-    puts ""
-    puts ""
   end
 
+  def check_secret
+    secret = String.new
+    guess_letter = display_letters_guessed
+    @secret_word.split("").each do |letter|
+      if guess_letter == letter
+        secret << letter + " "
+      else
+        secret << '_' + " "
+      end
+    end
+    puts secret.chomp
+    puts @secret_word # Delete later
+    if not @secret_word.split("").include? guess_letter
+      @wrong_guesses << guess_letter
+    end
+  end
 
-  
 end
