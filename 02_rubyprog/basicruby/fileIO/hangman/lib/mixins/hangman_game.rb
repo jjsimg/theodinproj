@@ -6,6 +6,7 @@ class HangmanGame
     # if file isn't already open
 		@dict = File.open('sample_dictionary.txt','r')
     welcome_message
+    get_selection
     check_save
     if check_save
       load_game
@@ -14,6 +15,13 @@ class HangmanGame
     end
     while still_guessing?
       show
+      if player_win?
+        winning_message
+        break
+      end
+      if player_lose?
+        losing_message
+      end
     end
 	end
 
@@ -55,7 +63,7 @@ class HangmanGame
     @updated_secret = @guessing.check_secret
     @guessing.wrong_guesses
     @guesses_left-=1
-    puts "here is the secret: #{@updated_secret}"
+    puts "here is the secret: #{@updated_secret}" # Delete later
   end
 
   def get_word
@@ -70,13 +78,33 @@ class HangmanGame
   end
 
   def still_guessing?
+    unless @guesses_left == Hangman::MAX_GUESSES
+      @updated_secret.each do |elem|
+        false if elem=='_'
+        break
+      end
+    end
     if @guesses_left > 0
       true
     end
-    @updated_secret.each do |elem|
-      false if elem=='_'
-      break
+  end
+
+  def player_win?
+    if @guesses_left>0 and not @updated_secret.include? '_'
+      true
     end
+  end
+
+  def player_lose?
+    true if @guesses_left==0
+  end
+
+  def winning_message
+    puts "Congratulations! You win!"
+  end
+
+  def losing_message
+    puts "You ran out of guesses! You lose!"
   end
 
   def welcome_message
@@ -86,13 +114,15 @@ class HangmanGame
     puts "*Welcome to the game of Hangman*"
     puts "********************************"
     puts ""
-    puts ""
     puts "Do you want to load a saved game?"
     puts "(Y)es"
     puts "or"
     puts "(N)o"
     puts ""
     print "What is your selection? "
+  end
+
+  def get_selection
     @selection = gets.chomp
   end
 end

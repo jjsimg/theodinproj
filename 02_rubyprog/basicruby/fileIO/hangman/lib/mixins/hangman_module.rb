@@ -1,5 +1,5 @@
 module Hangman
-  MAX_GUESSES = 6
+  MAX_GUESSES = 12
 
 
 end

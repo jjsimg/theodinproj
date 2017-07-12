@@ -18,7 +18,6 @@ class Guess
   end
 
   def check_secret
-    @guess_letter = display_letters_guessed
     @secret_word.split("").each_with_index do |letter,idx|
       if @guess_letter == letter
         @secret_show[idx] = letter
@@ -28,8 +27,9 @@ class Guess
         @secret_show[idx] = '_'
       end
     end
-    puts @secret_word
+    puts @secret_word # Delete later
     puts @secret_show.join(" ") # Delete later
+    @guess_letter = display_letters_guessed
     @secret_show
   end
 
