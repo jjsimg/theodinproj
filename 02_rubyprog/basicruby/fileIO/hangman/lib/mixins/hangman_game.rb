@@ -11,7 +11,9 @@ class HangmanGame
     else
       new_game
     end
-    
+    show
+    show
+    show
 	end
 
   def check_save
@@ -33,16 +35,14 @@ class HangmanGame
     puts "Computer is selecting a word..."
     @secret = get_word
     @guesses_left = Hangman::MAX_GUESSES
-    sleep(0.4)
+    @guessing = Guess.new
+    sleep(0.5)
     puts "Word has been selected!"
+    puts ""
   end
 
   def make_spaces(secret)
     
-  end
-
-  def display_remaining_guesses
-    puts "Your number of guesses is: #{@guesses_left}"
   end
 
   def show
@@ -53,8 +53,8 @@ class HangmanGame
     puts "========================="
     puts ""
     puts ""
-    display_remaining_guesses
-    incorrect_letter unless incorrect_letter==nil
+    @guessing.display_secret(@secret, @guesses_left)
+    @guessing.display_remaining_guesses
   end
 
   def get_word
@@ -74,14 +74,14 @@ class HangmanGame
     puts "********************************"
     puts "*Welcome to the game of Hangman*"
     puts "********************************"
-    puts "="
-    puts "="
+    puts ""
+    puts ""
     puts "Do you want to load a saved game?"
     puts "(Y)es"
     puts "or"
     puts "(N)o"
     puts ""
-    puts ""
+    print "What is your selection? "
     @selection = gets.chomp
   end
 end
