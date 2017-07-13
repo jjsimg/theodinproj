@@ -5,6 +5,7 @@ class Guess
     @guesses_remain = Hangman::MAX_GUESSES
     @wrong_guesses = Array.new
     @secret_show = Array.new(secret_word.size)
+    @start_secret = true
   end
 
   def display_letters_guessed
@@ -19,20 +20,25 @@ class Guess
   end
 
   def check_secret
-    count=0
     @guess_letter = display_letters_guessed
     @secret_word.split("").each_with_index do |letter,idx|
       if @guess_letter == letter
         @secret_show[idx] = letter
-      elsif @secret_show[idx] != nil and @secret_show[idx] != '_'
+      elsif @secret_show[idx] != nil
         next
       else
         @secret_show[idx] = '_'
       end
-      if count == @secret_word.size-1
-        # @guesses_remain -= 1
-      end
     end
+    new_guess = @secret_show
+    if @start_secret
+      old_guess = 'initialize'
+      @start_secret = false
+    end
+    if new_guess==old_guess
+      @guesses_remain-=1
+    end
+    old_guess = new_guess
     puts @secret_word # Delete later
     puts @secret_show.join(" ") # Delete later
     @secret_show
@@ -43,6 +49,7 @@ class Guess
       @wrong_guesses << @guess_letter
     end
     puts "Wrong guesses: #{@wrong_guesses}"
+    @wrong_guesses
   end
 
 end

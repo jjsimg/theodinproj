@@ -7,12 +7,7 @@ class HangmanGame
 		@dict = File.open('sample_dictionary.txt','r')
     welcome_message
     get_selection
-    check_save
-    if check_save
-      load_game
-    else
-      new_game
-    end
+    start_game
     while still_guessing?
       banner
       calculate
@@ -23,34 +18,39 @@ class HangmanGame
       if player_lose?
         losing_message
       end
+      break if ask_to_save?
     end
 	end
 
-  def check_save
-    if @selection == 'Y' or @selection =='y'
+  def ask_to_save?
+    print "Would you like to save? "
+    user_input = gets.chomp
+    if user_input=='Y' or user_input=='y'
+      s_file = @secret.split("")
+      g_file = @updated_secret
+      w_file = @wrong_guesses
+      save_file = SaveGame.new(s_file, g_file, w_file)
+      save_file.save_file
+      puts "Game is saved!"
       true
-    elsif @selection == 'N' or @selection == 'n'
+    elsif user_input=='N' or user_input=='n'
       false
     end
   end
 
-  def load_game
-    @load_game = SaveGame.new
-    @load_game.each_with_index do |line,idx|
-      puts line if idx%1000==0
-    end
-  end
-
-  def new_game
+  def start_game
     puts "Computer is selecting a word..."
-    @secret = get_word
+    if @selection=='Y' or @selection == 'y'
+      @secret = SaveGame.new.load_file
+    elsif @selection=='N' or @selection == 'n'
+      @secret = get_word
+    end
     @guesses_left = Hangman::MAX_GUESSES
     @guessing = Guess.new(@secret)
     sleep(0.5)
     puts "Word has been selected!"
     puts ""
   end
-
 
   def banner
     puts "========================="
@@ -111,6 +111,7 @@ class HangmanGame
     puts "You ran out of guesses! You lose!"
   end
 
+
   def welcome_message
     puts ""
     puts ""
@@ -128,5 +129,10 @@ class HangmanGame
 
   def get_selection
     @selection = gets.chomp
+    if @selection == 'Y' or @selection =='y'
+      true
+    elsif @selection == 'N' or @selection == 'n'
+      false
+    end
   end
 end
