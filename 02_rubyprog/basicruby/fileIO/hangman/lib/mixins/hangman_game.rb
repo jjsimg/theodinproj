@@ -16,7 +16,6 @@ class HangmanGame
     while still_guessing?
       banner
       calculate
-      @guesses_left -= 1
       if player_win?
         winning_message
         break
@@ -64,9 +63,9 @@ class HangmanGame
   end
 
   def calculate
-    @guessing.display_remaining_guesses(@guesses_left)
+    @guessing.display_remaining_guesses
     @updated_secret = @guessing.check_secret
-    @guessing.wrong_guesses
+    @wrong_guesses = @guessing.wrong_guesses
     puts "here is the secret: #{@updated_secret}" # Delete later
   end
 
