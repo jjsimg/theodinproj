@@ -1,10 +1,10 @@
 class Guess
 
-  def initialize(secret_word)
+  def initialize(secret_word, guesses, wrong_guesses)
     @secret_word = secret_word
+    @guesses = guesses
+    @wrong_guesses = wrong_guesses
     @guesses_remain = Hangman::MAX_GUESSES
-    @wrong_guesses = Array.new
-    @secret_show = Array.new(secret_word.size)
     @start_secret = true
   end
 
@@ -17,31 +17,48 @@ class Guess
 
   def display_remaining_guesses
     puts "Your number of guesses is: #{@guesses_remain}"
+    @guesses_remain
   end
 
   def check_secret
     @guess_letter = display_letters_guessed
     @secret_word.split("").each_with_index do |letter,idx|
       if @guess_letter == letter
-        @secret_show[idx] = letter
-      elsif @secret_show[idx] != nil
+        @guesses[idx] = letter
+      elsif @guesses[idx] != nil
         next
       else
-        @secret_show[idx] = '_'
+        @guesses[idx] = '_'
       end
     end
-    new_guess = @secret_show
+    check_remaining_guesses
+    puts @secret_word # Delete later
+    puts @guesses.join(" ") # Delete later
+    @guesses
+  end
+
+  def check_remaining_guesses
+    tmp = @guesses
+    new_guess = tmp
     if @start_secret
-      old_guess = 'initialize'
+      @old_guess = 'initialize'
       @start_secret = false
     end
-    if new_guess==old_guess
+    print new_guess
+    puts ""
+    print @old_guess
+    puts ""
+    if new_guess==@old_guess
       @guesses_remain-=1
+      puts "guessed wrong"
     end
-    old_guess = new_guess
-    puts @secret_word # Delete later
-    puts @secret_show.join(" ") # Delete later
-    @secret_show
+    @old_guess = new_guess
+  end
+
+  def old_guess
+  end
+
+  def new_guess
   end
 
   def wrong_guesses

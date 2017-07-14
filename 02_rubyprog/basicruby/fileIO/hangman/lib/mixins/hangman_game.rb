@@ -25,7 +25,7 @@ class HangmanGame
   def ask_to_save?
     print "Would you like to save? "
     user_input = gets.chomp
-    if user_input=='Y' or user_input=='y'
+    if user_input == 'Y' or user_input == 'y'
       s_file = @secret
       g_file = @updated_secret.join
       w_file = @wrong_guesses.join
@@ -33,21 +33,26 @@ class HangmanGame
       save_file.save_file
       puts "Game is saved!"
       true
-    elsif user_input=='N' or user_input=='n'
+    elsif user_input == 'N' or user_input == 'n'
       false
     end
   end
 
   def start_game
     puts "Computer is selecting a word..."
-    if @selection=='Y' or @selection == 'y'
-      @arr = SaveGame.new.load_file
-      @secret = @arr[0]
-    elsif @selection=='N' or @selection == 'n'
+    if @selection == 'Y' or @selection == 'y'
+      arr = SaveGame.new.load_file
+      @secret = arr[0]
+      @guesses = arr[1].split("")
+      @wrong_guesses = arr[2].split("")
+      @guessing = Guess.new(@secret, @guesses, @wrong_guesses)
+    elsif @selection == 'N' or @selection == 'n'
       @secret = get_word
+      @guesses = Array.new(@secret.size)
+      @wrong_guesses = Array.new
+      @guessing = Guess.new(@secret, @guesses, @wrong_guesses)
     end
     @guesses_left = Hangman::MAX_GUESSES
-    @guessing = Guess.new(@secret)
     sleep(0.5)
     puts "Word has been selected!"
     puts ""
@@ -64,15 +69,10 @@ class HangmanGame
   end
 
   def calculate
-    @guessing.display_remaining_guesses
-    if @selection=='Y' or @selection=='y'
-      @updated_secret = @arr[1].split("")
-      @wrong_guesses = @arr[2].split("")
-    elsif @selection=='N' or @selection=='n'
-      @updated_secret = @guessing.check_secret
-      @wrong_guesses = @guessing.wrong_guesses
-    end
-    puts "here is the secret: #{@updated_secret}" # Delete later
+    @guesses_left = @guessing.display_remaining_guesses
+    @updated_secret = @guessing.check_secret
+    @wrong_guesses = @guessing.wrong_guesses
+    puts "Your guess: #{@updated_secret}" # Delete later
   end
 
 
