@@ -8,19 +8,16 @@ class SaveGame
   end
 	
   def save_file
-    @save = File.open('game_save.yaml','w')
-    @save.print YAML::dump(@secret)
-    @save.print YAML::dump(@guesses)
-    @save.print YAML::dump(@wrong_guesses)
+    @save = File.open('game_save.yaml','w') do |file|
+      file.print YAML::dump(@secret)
+      file.print YAML::dump(@guesses)
+      file.print YAML::dump(@wrong_guesses)
+    end
   end
 
   def load_file
   	begin
-      array = Array.new
-    	File.open('game_save.yaml','r').each do |line|
-        array << YAML::load(line)
-      end
-      array.join("")
+      array = YAML::load_stream(File.open('game_save.yaml'))
     rescue
       puts "File doesn't exist, cannot load game file"
     end
