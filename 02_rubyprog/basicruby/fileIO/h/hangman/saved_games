@@ -1,0 +1,41 @@
+---
+perfect: |
+  --- !ruby/object:HangmanGame
+  view: !ruby/object:HangmanView {}
+  word: MOTTLE
+  misses: []
+  hits:
+  - E
+  - L
+  - T
+  - O
+  guesses_left: 10
+game1: |
+  --- !ruby/object:HangmanGame
+  view: !ruby/object:HangmanView {}
+  word: COIFFURE
+  misses:
+  - J
+  - A
+  - P
+  - D
+  - Q
+  - K
+  - L
+  hits:
+  - I
+  - E
+  guesses_left: 3
+game2: |
+  --- !ruby/object:HangmanGame
+  view: !ruby/object:HangmanView {}
+  word: COSPONSOR
+  misses:
+  - F
+  - E
+  - A
+  - I
+  - T
+  hits:
+  - O
+  guesses_left: 5
