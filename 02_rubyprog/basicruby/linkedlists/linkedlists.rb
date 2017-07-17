@@ -5,25 +5,23 @@ class LinkedList
   end
 
   def append(value)
-    current = traverse
+    current = traverse_to_end
     current.next = Node.new(value)
   end
 
   def my_prepend(value)
-    new_node = @head
-    new_node.value = value
-    new_node.next = @head.next
+    @head = Node.new(value, @head)
   end
 
   def size
-    current = @head
-    count = 0 if current.value == nil
-    count = 1 if current.value != nil
-    while current.next != nil
-      current = current.next
-      count += 1
-    end
-    count
+    # current = @head
+    # count = 0 if current.value == nil
+    # count = 1 if current.value != nil
+    # while current.next != nil
+    #   current = current.next
+    #   count += 1
+    # end
+    # count
   end
 
   def head
@@ -31,7 +29,7 @@ class LinkedList
   end
 
   def tail
-    current = traverse
+    current = traverse_to_end
     current.value
   end
 
@@ -51,7 +49,7 @@ class LinkedList
   def to_s
   end
 
-  def traverse
+  def traverse_to_end
     current = @head
     while current.next != nil
       current = current.next
@@ -72,5 +70,6 @@ end
 a=LinkedList.new(4)
 a.append(3)
 a.my_prepend(2)
-# a.append(8)
+a.append(8)
+# 2438
 puts a.size
