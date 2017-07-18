@@ -1,24 +1,33 @@
 class BinarySearchTree
-  def initialize(root_value)
-    @root = Node.new(root_value)
+
+  def initialize(root_value=nil)
+    @root = Node.new(root_value) unless root_value.nil?
   end
 
   def build_tree(array)
-    current = @root
+    binary_tree = BinarySearchTree.new
+    array.each { |element| binary_tree.add_node(element) }
+    binary_tree
+  end
 
-    array.each do |num|
-      current.parent = current
-      if current.child_left == nil
-        current.child_left = Node.new(num)
-        next
-      end
-      if current.child_right == nil
-        current.child_right = Node.new(num)
-        next
-      end
-      current = current.child_left
+  def add_node(value)
+    if @root.nil?
+      @root = Node.new(value)
+    else
+      add_to_binary_tree(Node.new(value), @root)
     end
+  end
 
+  def add_to_binary_tree(node, parent)
+    return node if parent.nil?
+
+    node.parent = parent
+    if node.value < parent.value
+      parent.child_left = add_to_binary_tree(node, parent.child_left)
+    else
+      parent.child_right = add_to_binary_tree(node, parent.child_right)
+    end
+    parent
   end
 
   def breadth_first_search
@@ -44,5 +53,5 @@ class Node
 
 end
 
-a = BinarySearchTree.new(2)
-a.build_tree([1, 7, 4, 23, 8, 9, 5, 7, 9, 67, 6345, 324])
+a = BinarySearchTree.new
+print a.build_tree([1, 7, 4, 23, 8, 9, 5, 7, 9, 67, 6345, 324])
