@@ -80,7 +80,10 @@ class LinkedList
     str
   end
 
-  def insert_at(idx)
+  def insert_at(idx, value)
+    current = @head
+    prev = current
+    current.next = Node.new(value)
   end
 
   def remove_at(idx)
