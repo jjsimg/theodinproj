@@ -14,14 +14,13 @@ class LinkedList
   end
 
   def size
-    # current = @head
-    # count = 0 if current.value == nil
-    # count = 1 if current.value != nil
-    # while current.next != nil
-    #   current = current.next
-    #   count += 1
-    # end
-    # count
+    count = 0 if @head.value == nil
+    count = 1 if @head.value != nil
+    while @head.next != nil
+      @head = @head.next
+      count += 1
+    end
+    count
   end
 
   def head
@@ -33,20 +32,58 @@ class LinkedList
     current.value
   end
 
-  def at(index)
-
+  def at(idx)
+    current = @head
+    idx.times { current = current.next }
+    current.value
   end
 
   def pop
+    current = @head
+    prev = nil
+    while current.next != nil
+      prev = current
+      current = current.next
+    end
+    prev.next = nil
   end
 
-  def contains?
+  def contains?(value)
+    current = @head
+    return true if value == current.value
+    while current.next != nil
+      current = current.next
+      return true if value == current.value
+    end
+    false
   end
 
   def find(data)
+    current = @head
+    idx = 0
+    return idx if current.value == data
+    while current.next != nil
+      idx += 1
+      current = current.next
+      return idx if current.value == data
+    end
   end
 
   def to_s
+    current = @head
+    str = "( #{current} ) -> "
+    while current.next != nil
+      current = current.next
+      str << "( #{current} ) -> "
+    end
+    str << "nil"
+    str
+  end
+
+  def insert_at(idx)
+  end
+
+  def remove_at(idx)
   end
 
   def traverse_to_end
@@ -72,4 +109,5 @@ a.append(3)
 a.my_prepend(2)
 a.append(8)
 # 2438
-puts a.size
+# a.pop
+puts a.to_s
