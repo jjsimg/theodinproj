@@ -1,7 +1,7 @@
 class LinkedList
 
-  def initialize(value)
-    @head = Node.new(value) unless value==nil
+  def initialize(value=nil)
+    @head = Node.new(value)
   end
 
   def append(value)
@@ -35,7 +35,7 @@ class LinkedList
   def at(idx)
     current = @head
     idx.times { current = current.next }
-    current.value
+    current
   end
 
   def pop
@@ -71,22 +71,21 @@ class LinkedList
 
   def to_s
     current = @head
-    str = "( #{current} ) -> "
+    str = "( #{current.value} ) -> "
     while current.next != nil
       current = current.next
-      str << "( #{current} ) -> "
+      str << "( #{current.value} ) -> "
     end
     str << "nil"
     str
   end
 
   def insert_at(idx, value)
-    current = @head
-    prev = current
-    current.next = Node.new(value)
+    self.at(idx-1).next = Node.new(value, self.at(idx-1).next)
   end
 
   def remove_at(idx)
+    self.at(idx-1).next = self.at(idx).next
   end
 
   def traverse_to_end
@@ -96,6 +95,7 @@ class LinkedList
     end
     current
   end
+
 end
 
 class Node
@@ -107,10 +107,13 @@ class Node
   end
 end
 
-a=LinkedList.new(4)
-a.append(3)
-a.my_prepend(2)
-a.append(8)
-# 2438
-# a.pop
+a=LinkedList.new(2)
+# a.append(3)
+a.my_prepend(3)
+# a.append(8)
+# # 2438
+# a.insert_at 2, 7
+# # 24738
+# a.remove_at 2
+# a.remove_at 3
 puts a.to_s
