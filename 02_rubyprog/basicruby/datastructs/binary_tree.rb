@@ -1,4 +1,5 @@
 class BinarySearchTree
+  attr_reader :root
 
   def initialize(root_value=nil)
     @root = Node.new(root_value) unless root_value.nil?
@@ -27,10 +28,11 @@ class BinarySearchTree
     else
       parent.child_right = add_to_binary_tree(node, parent.child_right)
     end
-    parent
+    # parent
   end
 
   def breadth_first_search
+    
   end
 
   def depth_first_seach
@@ -54,4 +56,5 @@ class Node
 end
 
 a = BinarySearchTree.new
-print a.build_tree([1, 7, 4, 23, 8, 9, 5, 7, 9, 67, 6345, 324])
+a.build_tree([1, 7, 4, 23, 8, 9, 5, 7, 9, 67, 6345, 324])
+print a.root
