@@ -65,11 +65,14 @@ class BinarySearchTree
   end
 
   def dfs_rec(target, node = @root)
-    # needs more work, doesn't work properly
-    dfs_rec(target, node.child_left) if node.child_left != nil
+    return if node.nil?
     return node if node.value == target
-    puts node.value
-    dfs_rec(target, node.child_right) if node.child_right != nil
+
+    left_search = dfs_rec(target, node.child_left)
+    return left_search unless left_search.nil?
+    # puts node.value
+    right_search = dfs_rec(target, node.child_right)
+    return right_search unless right_search.nil?
   end
 
 end
@@ -89,4 +92,4 @@ end
 a = BinarySearchTree.new
 a.build_tree([1, 7, 4, 23, 8, 9, 5, 7, 9, 67, 6345, 324])
 # print a.root.child_right.child_left.value
-print a.dfs_rec(9).value
+print a.dfs_rec(6346)
