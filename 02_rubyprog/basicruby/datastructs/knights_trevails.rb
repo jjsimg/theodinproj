@@ -9,6 +9,8 @@ class Knight
     return if start_pos == end_pos
 
     qu = traverse(start_pos, node)
+
+    
     return if new_pos == end_pos
     knight_moves(new_pos, end_pos)
 
