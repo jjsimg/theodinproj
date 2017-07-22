@@ -1,52 +1,41 @@
 def knight_moves(start_pos, end_pos)
-  # return if start_pos == location
+  return if start_pos == end_pos
 
-  # knight_moves(start_pos, end_pos)
+  new_pos = traverse(start_pos)
+  return if new_pos == end_pos
+  knight_moves(new_pos, end_pos)
 
+  
 
-  traverse(start_pos)
+  # print traverse(start_pos)
 end
 
 def traverse(pos)
-  pos0 = pos.clone
-  pos0[0] += -1
-  pos0[1] += 2
-  print "[#{pos0[0]}, #{pos0[1]}], 2 up 1 left\n"
+  x_upper_bound = 8
+  x_lower_bound = 1
+  y_upper_bound = 8
+  y_lower_bound = 1
 
-  pos1 = pos.clone
-  pos1[0] += 1
-  pos1[1] += 2
-  print "[#{pos1[0]}, #{pos1[1]}], 2 up 1 right\n"
+  tl1 = [-1, 2]
+  tr1 = [1, 2]
+  ml1 = [-2, 1]
+  mr1 = [2, 1]
+  ml2 = [-2, -1]
+  mr2 = [2, -1]
+  bl1 = [-1, -2]
+  br1 = [1, -2]
+  arr = [tl1, tr1, ml1, mr1, ml2, mr2, bl1, br1]
 
-  pos2 = pos.clone
-  pos2[0] += -2
-  pos2[1] += 1
-  print "[#{pos2[0]}, #{pos2[1]}], 1 up 2 left\n"
+  8.times do |i|
+    pos_t = pos
+    r = [pos_t, arr[i]].transpose.map { |x| x.reduce(:+) }
+    if r[0] >= x_lower_bound and r[0] <= x_upper_bound and 
+       r[1] >= y_lower_bound and r[1] <= y_upper_bound
+       return r
+    end
+    print "[#{r[0]}, #{r[1]}]\n"
+  end
 
-  pos3 = pos.clone
-  pos3[0] += 2
-  pos3[1] += 1
-  print "[#{pos3[0]}, #{pos3[1]}], 1 up 2 right\n"
-
-  pos4 = pos.clone
-  pos4[0] += -2
-  pos4[1] += -1
-  print "[#{pos4[0]}, #{pos4[1]}], 1 down 2 left\n"
-
-  pos5 = pos.clone
-  pos5[0] += 2
-  pos5[1] += -1
-  print "[#{pos5[0]}, #{pos5[1]}], 1 down 2 right\n"
-
-  pos6 = pos.clone
-  pos6[0] += -1
-  pos6[1] += -2
-  print "[#{pos6[0]}, #{pos6[1]}], 2 down 1 left\n"
-
-  pos7 = pos.clone
-  pos7[0] += 1
-  pos7[1] += -2
-  print "[#{pos7[0]}, #{pos7[1]}], 2 down 1 right\n"
 end
 
-knight_moves([1,2],[3,1])
+knight_moves([3,3],[4,3])
