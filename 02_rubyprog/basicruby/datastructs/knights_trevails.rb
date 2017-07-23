@@ -1,24 +1,22 @@
 class Knight
 
   def initialize
-    @root = nil
+    @root = Node.new(nil)
   end
 
   def knight_moves(start_pos, end_pos)
     return if start_pos == end_pos
 
-    qu = traverse(start_pos, node)
+    positions = get_positions(start_pos)
+    iterate_through_moves(positions)
+    # knight_moves(new_pos, end_pos)
 
     
-    return if new_pos == end_pos
-    knight_moves(new_pos, end_pos)
 
-    
-
-    # print traverse(start_pos)
+    # print get_positions(start_pos)
   end
 
-  def traverse(pos, node)
+  def get_positions(init_pos)
     queue = []
 
     x_upper_bound = 8
@@ -37,27 +35,39 @@ class Knight
     arr = [tl1, tr1, ml1, mr1, ml2, mr2, bl1, br1]
 
     8.times do |i|
-      pos_t = pos
+      pos_t = init_pos
       r = [pos_t, arr[i]].transpose.map { |x| x.reduce(:+) }
       if r[0] >= x_lower_bound and r[0] <= x_upper_bound and 
          r[1] >= y_lower_bound and r[1] <= y_upper_bound
-        # print "[#{r[0]}, #{r[1]}]\n" 
-        # return node.child = Node.new(pos_t)
         queue.push(r)
       end
       # print "[#{r[0]}, #{r[1]}]\n"
     end
-    queue
+    queue #returns all of the possible positions that the knight can travel on chess board as an array
+  end
+
+  def iterate_through_moves(array)
+    array.each { |xy_pos| make_list(xy_pos, @root) }
+
+  end
+
+  def make_list(current_pos, node)
+    current_node = Node.new(current_pos)
+    if @root.next_node.nil?
+      @root.next_node = current_node
+    end
+    current_node.prev_node = node
+    current_node.next_node = node
   end
 
 
 end
 
 class Node
-  attr_accessor :position, :child, :parent
+  attr_accessor :current_loc, :next_node, :prev_node
 
   def initialize(position, next_node = nil, prev_node = nil)
-    @position = position
+    @current_loc = position
     @next_node = next_node
     @prev_node = prev_node
   end
