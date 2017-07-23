@@ -2,7 +2,6 @@ class Knight
 
   def initialize
     @root = nil
-    @queue = []
   end
 
   def knight_moves(start_pos, end_pos)
