@@ -59,7 +59,7 @@ class Knight
   end
 
   def find_route(end_pos)
-    current_pos = end_pos
+    current_pos = end_pos 
     route = []
     until current_pos.nil?
       route << current_pos.current_loc
