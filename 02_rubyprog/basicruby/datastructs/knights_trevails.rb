@@ -4,16 +4,11 @@ class Knight
     @root = Node.new(nil)
   end
 
-  def knight_moves(start_pos, end_pos)
-    return if start_pos == end_pos
-
-    positions = get_positions(start_pos)
-    iterate_through_moves(positions)
-    # knight_moves(new_pos, end_pos)
-
-    
-
-    # print get_positions(start_pos)
+  def knight_moves(start, target)
+    start_pos = Node.new(start)
+    end_pos = traverse(start_pos, target)
+    route = find_route(end_pos)
+    print_route(route)
   end
 
   def get_positions(init_pos)
@@ -43,36 +38,53 @@ class Knight
       end
       # print "[#{r[0]}, #{r[1]}]\n"
     end
+    # print queue
     queue #returns all of the possible positions that the knight can travel on chess board as an array
   end
 
-  def iterate_through_moves(array)
-    array.each { |xy_pos| make_list(xy_pos, @root) }
+  def traverse(start_pos, target)
+    current_pos = start_pos
+    queue = []
 
-  end
-
-  def make_list(current_pos, node)
-    current_node = Node.new(current_pos)
-    if @root.next_node.nil?
-      @root.next_node = current_node
+    loop do
+      coordinates_to_check = get_positions(current_pos.current_loc)
+      coordinates_to_check.each do |coordinates|
+        move = Node.new(coordinates)
+        move.prev = current_pos
+        return move if move.current_loc == target
+        queue << move
+      end
+      current_pos = queue.shift
     end
-    current_node.prev_node = node
-    current_node.next_node = node
   end
 
+  def find_route(end_pos)
+    current_pos = end_pos
+    route = []
+    until current_pos.nil?
+      route << current_pos.current_loc
+      current_pos = current_pos.prev
+    end
+    route
+  end
+
+  def print_route(route)
+    number_of_moves = route.size - 1
+    print "You made it in #{number_of_moves} steps! Here's your path:\n"
+    route.reverse.each { |step| print "#{step}\n" }
+  end
 
 end
 
 class Node
-  attr_accessor :current_loc, :next_node, :prev_node
+  attr_accessor :current_loc, :prev
 
-  def initialize(position, next_node = nil, prev_node = nil)
+  def initialize(position, prev_node = nil)
     @current_loc = position
-    @next_node = next_node
-    @prev_node = prev_node
+    @prev = prev_node
   end
 end
 
 k = Knight.new
 
-k.knight_moves([3,3],[4,3])
+k.knight_moves([1,1],[5,7])
