@@ -1,9 +1,5 @@
 class Knight
 
-  def initialize
-    @root = Node.new(nil)
-  end
-
   def knight_moves(start, target)
     start_pos = Node.new(start)
     end_pos = traverse(start_pos, target)
