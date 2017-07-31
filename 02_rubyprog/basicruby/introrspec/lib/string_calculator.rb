@@ -1,6 +1,10 @@
 class StringCalculator
 
 	def self.add input
-		0
+		if input.empty?
+			0
+		else
+			input.to_i
+		end
 	end
 end
