@@ -6,6 +6,9 @@ module Enumerable
   end
 
   def my_each_with_index
+    if self.length < 1
+      return ""
+    end
     for i in 0...self.length
       yield(self[i],i)
     end

@@ -23,16 +23,15 @@ a=My_methods.new(array1)
 # c=a.items.inject
 
 # print c
-
-c=a.items.inject do |product,n| 
-  product*n
+c=a.items.my_each_with_index do |x|
+	print x
 end
-print c
+# print "#{c}\n"
 
-b=a.items.my_inject do |product,n| 
-  product*n
-end
-print b
+# b=a.items.my_inject do |product,n| 
+#   product*n
+# end
+# print "#{b}\n"
 
-d=a.items.multiply_els
-print d
+# d=a.items.multiply_els
+# print d
