@@ -51,4 +51,6 @@ class Board
 
 end
 
-# Board.display_bottom_separator
+Board.display_top_separator
+Board.display_middle_separator
+Board.display_bottom_separator

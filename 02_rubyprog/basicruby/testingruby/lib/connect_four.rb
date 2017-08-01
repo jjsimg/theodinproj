@@ -20,7 +20,6 @@ class ConnectFour
 
 		user_choice = get_choice
 
-
 	end
 
 	def get_choice
