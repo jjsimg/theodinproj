@@ -7,8 +7,11 @@ describe ConnectFour do
 
 	describe "#welcome_message" do
 		it "outputs the welcome message" do
-			expect(test_game.welcome_message).to eq("Let's play Connect Four")
+			message = "Let's play Connect Four\n"
+			expect(test_game.welcome_message).to output(message).to_stdout
 		end
 	end
+
+
 end
 
