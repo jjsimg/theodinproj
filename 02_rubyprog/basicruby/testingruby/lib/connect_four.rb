@@ -1,11 +1,14 @@
 class ConnectFour
+	
+
 	def initialize
 
 	end
 
 	def play
-		initialize_board = Board.new
+		@board = Board.new
 		welcome_message
+		draw_board
 	end
 
 	def welcome_message
@@ -15,11 +18,7 @@ class ConnectFour
 	end
 
 	def pick_column
-		choice = {first: 0, second: 1, third: 2, fourth: 3,
-		          fifth: 4, sixth: 5, seventh: 6}
-
 		user_choice = get_choice
-
 	end
 
 	def get_choice
@@ -31,6 +30,12 @@ class ConnectFour
 			return user_choice if user_choice <= 6 and user_choice >= 1
 			error_message
 		end
+	end
+
+	def draw_board
+
+		@board.display_top_separator
+
 	end
 	
 end

@@ -9,7 +9,7 @@ class Board
 			   right:          "\u2563",   left:         "\u2560", 
 			  }
 
-	def self.display_row(separator = PIECES[:vertical], width = HOLE_WIDTH, tab = true)
+	def display_row(separator = PIECES[:vertical], width = HOLE_WIDTH, tab = true)
 		print "\t" if tab
 
 		to_display = separator
@@ -21,22 +21,22 @@ class Board
 		print to_display
 	end
 
-	def self.display_top_separator(width = HOLE_WIDTH, new_line = true, tab = true)
+	def display_top_separator(width = HOLE_WIDTH, new_line = true, tab = true)
 		display_separator_row(PIECES[:top_left], PIECES[:top_divide], PIECES[:top_right], width, new_line, tab)
 		
 	end
 
-	def self.display_middle_separator(width = HOLE_WIDTH, new_line = true, tab = true)
+	def display_middle_separator(width = HOLE_WIDTH, new_line = true, tab = true)
 		display_separator_row(PIECES[:left], PIECES[:cross], PIECES[:right], width, new_line, tab)
 		
 	end
 
-	def self.display_bottom_separator(width = HOLE_WIDTH, new_line = true, tab = true)
+	def display_bottom_separator(width = HOLE_WIDTH, new_line = true, tab = true)
 		display_separator_row(PIECES[:bottom_left], PIECES[:bottom_divide], PIECES[:bottom_right], width, new_line, tab)
 		
 	end
 
-	def self.display_separator_row(left, middle, right, width, new_line, tab)
+	def display_separator_row(left, middle, right, width, new_line, tab)
 		print "\t" if tab
 		to_display = left
 		COLUMNS.times do
@@ -50,7 +50,3 @@ class Board
 	end
 
 end
-
-Board.display_top_separator
-Board.display_middle_separator
-Board.display_bottom_separator
