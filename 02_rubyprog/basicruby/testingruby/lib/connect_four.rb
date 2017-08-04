@@ -9,7 +9,7 @@ class ConnectFour
 	def play
 		welcome_message
 		number_of_players = choose_players
-		play_game(number_of_players)
+		make_moves(number_of_players)
 	end
 
 	def welcome_message
@@ -37,7 +37,7 @@ class ConnectFour
 		end
 	end
 
-	def play_game(number_of_players)
+	def make_moves(number_of_players)
 		until game_over?
 			choice = pick_column - 1
 			if number_of_players == 1

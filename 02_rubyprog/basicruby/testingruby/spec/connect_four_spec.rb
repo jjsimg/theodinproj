@@ -1,46 +1,39 @@
 require "connect_four"
 
 describe ConnectFour do
+
+
 	let(:test_game) { ConnectFour.new }
 
-	before(:each) do
-		allow(test_game).to receive(:gets)
-	end
-	# This does not properly check the print statement
-	describe "#welcome_message" do
-		it "outputs the welcome message" do
-			message = "Let's play Connect Four!\n"
-			allow(test_game).to receive(:print).and_return(message)
-		end
-	end
-
-
-	describe "#get_choice" do
-		context "it will inifinitely loop" do
-			it "until a number is selected" do
-				prompt = "Which column will you select?"
-				choice_range = [1,2,3,4,5,6,7]
-				allow(test_game.get_choice(prompt, choice_range)).to receive(:gets).and_return(1,2,3,4,5,6,7)
+	describe "#choose_players" do
+		context "not infinitely loop" do
+			it "if user choice is 1 or 2" do
+				allow(test_game).to receive(:gets).and_return("2")
+				expect(test_game.choose_players).to eq(2)
 			end
 		end
 	end
 
-	# This does not work either
-	# describe "#get_choice" do
-	# 	context "will accept prompts and return appropriate user input" do
-	# 		describe "#choose_players" do
-	# 			it "will accept either 1 or 2 as input" do
-	# 				allow(test_game).to receive(:gets).and_return("1", "2")
-	# 			end
-	# 		end
-	# 		describe "#pick_column" do
-	# 			it "will accept inputs between 1 and 7" do
-	# 				allow(test_game).to receive(:gets).and_return("1","2","3","4","5","6","7")
-	# 			end
-	# 		end
-	# 	end
-	# end
+	describe "#pick_column" do
+		context "will only return an integer between 1 and 7" do
+			it "will return 3 if user picks 3" do
+				allow(test_game).to receive(:gets).and_return("3")
+				expect(test_game.pick_column).to eq(3)
+			end
+			it "will return 6 if user picks 6" do
+				allow(test_game).to receive(:gets).and_return("6")
+				expect(test_game.pick_column).to eq(6)
+			end
+		end
+	end
 
+	describe "#change_players" do
+		context "will change game symbols if 2 players are playing" do
+			it "if player used 'O' then next will be 'X'" do
+				expect(test_game.change_players).to eq("X")
+			end
+		end
+	end
 end
 
 
