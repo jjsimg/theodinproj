@@ -1,6 +1,4 @@
 require "connect_four"
-require "connect_four_game"
-require "board"
 
 describe ConnectFour do
 	let(:test_game) { ConnectFour.new }
