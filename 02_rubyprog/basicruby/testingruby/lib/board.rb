@@ -1,12 +1,5 @@
 class Board
 
-	# "_-_-_-_-_-_-_"
-    # "_-_-_-_-_-_-_"
-    # "_-_-O-_-_-_-_"
-    # "_-_-E-O-_-_-_"
-    # "_-_-E-E-O-_-_"
-    # "_-_-E-E-E-O-_"
-
 	CONNECT_FOUR_ROWS = {
 			              first:  ['_','_','_','_','_','_','_'],
 			              second: ['_','_','_','_','_','_','_'],
@@ -20,16 +13,19 @@ class Board
 		return CONNECT_FOUR_ROWS
 	end
 
-	def draw_initial_board
-		print "\t"
+	def draw_board
 		label_row = "1 2 3 4 5 6 7"
-		            
+		print "\t" + label_row + "\n"
+		CONNECT_FOUR_ROWS.each do |key, array|
+			print "\t"
+			print array.join("|") + "\n"
+		end
 	end
 
-	def apply_choice(choice)
+	def apply_choice(choice, player_symbol)
 		# choice is a number between 1 and 7
 		CONNECT_FOUR_ROWS.reverse_each do |key, array|
-			return array[choice] = 'O' if array[choice] != 'O'
+			return array[choice] = player_symbol if array[choice] != "O" and array[choice] != "X"
 		end
 	end
 
