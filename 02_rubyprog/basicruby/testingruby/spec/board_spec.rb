@@ -20,8 +20,12 @@ describe Board do
 
 	describe "#draw_board" do
 		it "draws the board" do
-			allow(test_board).to receive(:print).and_return("_|_|_|_|_|_|_")
-			expect(test_board.draw_board).to eq("_|_|_|_|_|_|_")
+			line = ["_","_","_","_","_","_","_"]
+			line2 = ["_","_","_","X","_","_","_"]
+			board_hash = {first: line, second: line, third: line,
+						 fourth: line, fifth: line, sixth: line2}
+			allow(test_board).to receive(:print).and_return("")
+			expect(test_board.draw_board).to eq(board_hash)
 		end
 	end
 end

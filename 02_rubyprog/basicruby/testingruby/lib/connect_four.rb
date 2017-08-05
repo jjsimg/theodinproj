@@ -10,6 +10,8 @@ class ConnectFour
 		welcome_message
 		number_of_players = choose_players
 		make_moves(number_of_players)
+
+		game_finished_message
 	end
 
 	def welcome_message
@@ -38,16 +40,12 @@ class ConnectFour
 	end
 
 	def make_moves(number_of_players)
-		until game_over?
+		loop do
 			choice = pick_column - 1
-			if number_of_players == 1
-				@board.apply_choice(choice, @player_symbol)
-				@board.draw_board
-			else
-				@board.apply_choice(choice, @player_symbol)
-				@board.draw_board
-				change_players
-			end
+			@board.apply_choice(choice, @player_symbol)
+			@board.draw_board
+			return if game_over?
+			change_players if number_of_players == 2
 		end
 	end
 
@@ -56,10 +54,11 @@ class ConnectFour
 	end
 
 	def game_over?
-		false
-
+		@board.check_horizontal(@player_symbol)
 	end
 
-	def player_win?
+
+	def game_finished_message
+		print "Game is finished!"
 	end
 end
