@@ -4,6 +4,7 @@ class ConnectFour
 	def initialize
 		@board = Board.new
 		@player_symbol = "O"
+		@choice = nil
 	end
 
 	def play
@@ -41,8 +42,8 @@ class ConnectFour
 
 	def make_moves(number_of_players)
 		loop do
-			choice = pick_column - 1
-			@board.apply_choice(choice, @player_symbol)
+			@choice = pick_column - 1
+			@board.apply_choice(@choice, @player_symbol)
 			@board.draw_board
 			return if game_over?
 			change_players if number_of_players == 2
@@ -54,7 +55,9 @@ class ConnectFour
 	end
 
 	def game_over?
-		@board.check_horizontal(@player_symbol)
+		# return @board.check_vertical(@player_symbol, @choice) if true
+		# return @board.check_horizontal(@player_symbol) if true
+		@board.check_diagonal(@player_symbol)
 	end
 
 
