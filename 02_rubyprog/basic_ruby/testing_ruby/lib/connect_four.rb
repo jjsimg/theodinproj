@@ -55,13 +55,23 @@ class ConnectFour
 	end
 
 	def game_over?
-		# return @board.check_vertical(@player_symbol, @choice) if true
-		# return @board.check_horizontal(@player_symbol) if true
-		@board.check_diagonal(@player_symbol)
+		check_vertical = @board.check_vertical(@player_symbol, @choice)
+		check_diagonal = @board.check_diagonal(@player_symbol)
+		check_horizontal = @board.check_horizontal(@player_symbol)
+
+		check_vertical or check_diagonal or check_horizontal ? true : false
 	end
 
 
 	def game_finished_message
-		print "Game is finished!"
+		if @player_symbol == "O"
+			player_1_victory = "Congratulations Player 1, you win!"
+		end
+		if @player_symbol == "X"
+			player_2_victory = "Congratulations Player 2, you win!"
+		end
+
+		print "Game is finished!\n"
+		print player_1_victory or player_2_victory
 	end
 end
