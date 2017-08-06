@@ -54,83 +54,114 @@ class Board
 		check_array_f = []
 		check_array_b = []
 		# forward diagonal
-		i = 0
-		CONNECT_FOUR_ROWS.each do |key, board_array|
-			check_array_f << board_array[i]
-			i += 1
-			print check_array_f
+		loop do
+			i = 0
+			CONNECT_FOUR_ROWS.each do |key, board_array|
+				# case key
+				# when :first
+				# 	counter = 0
+				# when :second
+				# 	counter = 1
+				# when :third
+				# 	counter = 2
+				# when :fourth
+				# 	counter = 3
+				# end
+				# 4.times do
+				# 	check_array_f << board_array[counter]
+				# 	counter += 1
+				# end
+				# return true if check_array_f.count(player_symbol) == 4
+				check_array_f << board_array[i]
+				i += 1
+				next
+			end
+			check_array_f = []
 			return true if check_array_f.count(player_symbol) == 4
 		end
 
 		#forward diagonal
-		if CONNECT_FOUR_ROWS[:first][0] == player_symbol CONNECT_FOUR_ROWS[:second][1] CONNECT_FOUR_ROWS[:third][2] CONNECT_FOUR_ROWS[:fourth][3]
-
+		if CONNECT_FOUR_ROWS[:first][0] == player_symbol and CONNECT_FOUR_ROWS[:second][1] == player_symbol and CONNECT_FOUR_ROWS[:third][2] == player_symbol and CONNECT_FOUR_ROWS[:fourth][3] == player_symbol
+			return true
 		end
-		if CONNECT_FOUR_ROWS[:first][1] == player_symbol CONNECT_FOUR_ROWS[:second][2] CONNECT_FOUR_ROWS[:third][3] CONNECT_FOUR_ROWS[:fourth][4]
-
+		if CONNECT_FOUR_ROWS[:first][1] == player_symbol and CONNECT_FOUR_ROWS[:second][2] == player_symbol and CONNECT_FOUR_ROWS[:third][3] == player_symbol and CONNECT_FOUR_ROWS[:fourth][4] == player_symbol
+			return true
 		end
-		if CONNECT_FOUR_ROWS[:first][2] == player_symbol CONNECT_FOUR_ROWS[:second][3] CONNECT_FOUR_ROWS[:third][4] CONNECT_FOUR_ROWS[:fourth][5]
-
+		if CONNECT_FOUR_ROWS[:first][2] == player_symbol and CONNECT_FOUR_ROWS[:second][3] == player_symbol and CONNECT_FOUR_ROWS[:third][4] == player_symbol and CONNECT_FOUR_ROWS[:fourth][5] == player_symbol
+			return true
 		end
-		if CONNECT_FOUR_ROWS[:first][3] == player_symbol CONNECT_FOUR_ROWS[:second][4] CONNECT_FOUR_ROWS[:third][5] CONNECT_FOUR_ROWS[:fourth][6]
-
-		end
-
-
-		if CONNECT_FOUR_ROWS[:second][0] == player_symbol CONNECT_FOUR_ROWS[:third][1] CONNECT_FOUR_ROWS[:fourth][2] CONNECT_FOUR_ROWS[:fifth][3]
-
-		end
-		if CONNECT_FOUR_ROWS[:second][1] == player_symbol CONNECT_FOUR_ROWS[:third][2] CONNECT_FOUR_ROWS[:fourth][3] CONNECT_FOUR_ROWS[:fifth][4]
-
-		end
-		if CONNECT_FOUR_ROWS[:second][2] == player_symbol CONNECT_FOUR_ROWS[:third][3] CONNECT_FOUR_ROWS[:fourth][4] CONNECT_FOUR_ROWS[:fifth][5]
-
-		end
-		if CONNECT_FOUR_ROWS[:second][3] == player_symbol CONNECT_FOUR_ROWS[:third][4] CONNECT_FOUR_ROWS[:fourth][5] CONNECT_FOUR_ROWS[:fifth][6]
-
+		if CONNECT_FOUR_ROWS[:first][3] == player_symbol and CONNECT_FOUR_ROWS[:second][4] == player_symbol and CONNECT_FOUR_ROWS[:third][5] == player_symbol and CONNECT_FOUR_ROWS[:fourth][6] == player_symbol
+			return true
 		end
 
-		if CONNECT_FOUR_ROWS[:third][0] == player_symbol CONNECT_FOUR_ROWS[:fourth][1] CONNECT_FOUR_ROWS[:fifth][2] CONNECT_FOUR_ROWS[:sixth][3]
 
+		if CONNECT_FOUR_ROWS[:second][0] == player_symbol and CONNECT_FOUR_ROWS[:third][1] == player_symbol and CONNECT_FOUR_ROWS[:fourth][2] == player_symbol and CONNECT_FOUR_ROWS[:fifth][3] == player_symbol
+			return true
 		end
-		if CONNECT_FOUR_ROWS[:third][1] == player_symbol CONNECT_FOUR_ROWS[:fourth][2] CONNECT_FOUR_ROWS[:fifth][3] CONNECT_FOUR_ROWS[:sixth][4]
-
+		if CONNECT_FOUR_ROWS[:second][1] == player_symbol and CONNECT_FOUR_ROWS[:third][2] == player_symbol and CONNECT_FOUR_ROWS[:fourth][3] == player_symbol and CONNECT_FOUR_ROWS[:fifth][4] == player_symbol
+			return true
 		end
-		if CONNECT_FOUR_ROWS[:third][2] == player_symbol CONNECT_FOUR_ROWS[:fourth][3] CONNECT_FOUR_ROWS[:fifth][4] CONNECT_FOUR_ROWS[:sixth][5]
-
+		if CONNECT_FOUR_ROWS[:second][2] == player_symbol and CONNECT_FOUR_ROWS[:third][3] == player_symbol and CONNECT_FOUR_ROWS[:fourth][4] == player_symbol and CONNECT_FOUR_ROWS[:fifth][5] == player_symbol
+			return true
 		end
-		if CONNECT_FOUR_ROWS[:third][3] == player_symbol CONNECT_FOUR_ROWS[:fourth][4] CONNECT_FOUR_ROWS[:fifth][5] CONNECT_FOUR_ROWS[:sixth][6]
+		if CONNECT_FOUR_ROWS[:second][3] == player_symbol and CONNECT_FOUR_ROWS[:third][4] == player_symbol and CONNECT_FOUR_ROWS[:fourth][5] == player_symbol and CONNECT_FOUR_ROWS[:fifth][6] == player_symbol
+			return true
+		end
 
+		if CONNECT_FOUR_ROWS[:third][0] == player_symbol and CONNECT_FOUR_ROWS[:fourth][1] == player_symbol and CONNECT_FOUR_ROWS[:fifth][2] == player_symbol and CONNECT_FOUR_ROWS[:sixth][3] == player_symbol
+			return true
+		end
+		if CONNECT_FOUR_ROWS[:third][1] == player_symbol and CONNECT_FOUR_ROWS[:fourth][2] == player_symbol and CONNECT_FOUR_ROWS[:fifth][3] == player_symbol and CONNECT_FOUR_ROWS[:sixth][4] == player_symbol
+			return true
+		end
+		if CONNECT_FOUR_ROWS[:third][2] == player_symbol and CONNECT_FOUR_ROWS[:fourth][3] == player_symbol and CONNECT_FOUR_ROWS[:fifth][4] == player_symbol and CONNECT_FOUR_ROWS[:sixth][5] == player_symbol
+			return true
+		end
+		if CONNECT_FOUR_ROWS[:third][3] == player_symbol and CONNECT_FOUR_ROWS[:fourth][4] == player_symbol and CONNECT_FOUR_ROWS[:fifth][5] == player_symbol and CONNECT_FOUR_ROWS[:sixth][6] == player_symbol
+			return true
 		end
 
 
 
 
 		# #backward diagonal
-		# if CONNECT_FOUR_ROWS[:first][3] == player_symbol CONNECT_FOUR_ROWS[:second][2] CONNECT_FOUR_ROWS[:third][1] CONNECT_FOUR_ROWS[:fourth][0]
-
+		# if CONNECT_FOUR_ROWS[:first][3] == player_symbol and CONNECT_FOUR_ROWS[:second][2] == player_symbol and CONNECT_FOUR_ROWS[:third][1] == player_symbol and CONNECT_FOUR_ROWS[:fourth][0] == player_symbol
+		# 	return true
 		# end
-		# if CONNECT_FOUR_ROWS[:first][4] == player_symbol CONNECT_FOUR_ROWS[:second][3] CONNECT_FOUR_ROWS[:third][2] CONNECT_FOUR_ROWS[:fourth][1]
-
+		# if CONNECT_FOUR_ROWS[:first][4] == player_symbol and CONNECT_FOUR_ROWS[:second][3] == player_symbol and CONNECT_FOUR_ROWS[:third][2] == player_symbol and CONNECT_FOUR_ROWS[:fourth][1] == player_symbol
+		# 	return true
 		# end
-		# if CONNECT_FOUR_ROWS[:first][5] == player_symbol CONNECT_FOUR_ROWS[:second][4] CONNECT_FOUR_ROWS[:third][3] CONNECT_FOUR_ROWS[:fourth][2]
-
+		# if CONNECT_FOUR_ROWS[:first][5] == player_symbol and CONNECT_FOUR_ROWS[:second][4] == player_symbol and CONNECT_FOUR_ROWS[:third][3] == player_symbol and CONNECT_FOUR_ROWS[:fourth][2] == player_symbol
+		# 	return true
 		# end
-		# if CONNECT_FOUR_ROWS[:first][6] == player_symbol CONNECT_FOUR_ROWS[:second][5] CONNECT_FOUR_ROWS[:third][4] CONNECT_FOUR_ROWS[:fourth][3]
-
+		# if CONNECT_FOUR_ROWS[:first][6] == player_symbol and CONNECT_FOUR_ROWS[:second][5] == player_symbol and CONNECT_FOUR_ROWS[:third][4] == player_symbol and CONNECT_FOUR_ROWS[:fourth][3] == player_symbol
+		# 	return true
 		# end
 
-		# if CONNECT_FOUR_ROWS[:second][3] == player_symbol CONNECT_FOUR_ROWS[:third][2] CONNECT_FOUR_ROWS[:fourth][1] CONNECT_FOUR_ROWS[:fifth][0]
-
+		# if CONNECT_FOUR_ROWS[:second][3] == player_symbol and CONNECT_FOUR_ROWS[:third][2] == player_symbol and CONNECT_FOUR_ROWS[:fourth][1] == player_symbol and CONNECT_FOUR_ROWS[:fifth][0] == player_symbol
+		# 	return true
 		# end
-		# if CONNECT_FOUR_ROWS[:second][4] == player_symbol CONNECT_FOUR_ROWS[:third][3] CONNECT_FOUR_ROWS[:fourth][2] CONNECT_FOUR_ROWS[:fifth][1]
-
+		# if CONNECT_FOUR_ROWS[:second][4] == player_symbol and CONNECT_FOUR_ROWS[:third][3] == player_symbol and CONNECT_FOUR_ROWS[:fourth][2] == player_symbol and CONNECT_FOUR_ROWS[:fifth][1] == player_symbol
+		# 	return true
 		# end
-		# if CONNECT_FOUR_ROWS[:second][5] == player_symbol CONNECT_FOUR_ROWS[:third][4] CONNECT_FOUR_ROWS[:fourth][3] CONNECT_FOUR_ROWS[:fifth][2]
-
+		# if CONNECT_FOUR_ROWS[:second][5] == player_symbol and CONNECT_FOUR_ROWS[:third][4] == player_symbol and CONNECT_FOUR_ROWS[:fourth][3] == player_symbol and CONNECT_FOUR_ROWS[:fifth][2] == player_symbol
+		# 	return true
 		# end
-		# if CONNECT_FOUR_ROWS[:second][6] == player_symbol CONNECT_FOUR_ROWS[:third][5] CONNECT_FOUR_ROWS[:fourth][4] CONNECT_FOUR_ROWS[:fifth][3]
+		# if CONNECT_FOUR_ROWS[:second][6] == player_symbol and CONNECT_FOUR_ROWS[:third][5] == player_symbol and CONNECT_FOUR_ROWS[:fourth][4] == player_symbol and CONNECT_FOUR_ROWS[:fifth][3] == player_symbol
+		# 	return true
+		# end
 
+		# if CONNECT_FOUR_ROWS[:third][3] == player_symbol and CONNECT_FOUR_ROWS[:fourth][2] == player_symbol and CONNECT_FOUR_ROWS[:fifth][1] == player_symbol and CONNECT_FOUR_ROWS[:sixth][0] == player_symbol
+		# 	return true
+		# end
+		# if CONNECT_FOUR_ROWS[:third][4] == player_symbol and CONNECT_FOUR_ROWS[:fourth][3] == player_symbol and CONNECT_FOUR_ROWS[:fifth][2] == player_symbol and CONNECT_FOUR_ROWS[:sixth][1] == player_symbol
+		# 	return true
+		# end
+		# if CONNECT_FOUR_ROWS[:third][5] == player_symbol and CONNECT_FOUR_ROWS[:fourth][4] == player_symbol and CONNECT_FOUR_ROWS[:fifth][3] == player_symbol and CONNECT_FOUR_ROWS[:sixth][2] == player_symbol
+		# 	return true
+		# end
+		# if CONNECT_FOUR_ROWS[:third][6] == player_symbol and CONNECT_FOUR_ROWS[:fourth][5] == player_symbol and CONNECT_FOUR_ROWS[:fifth][4] == player_symbol and CONNECT_FOUR_ROWS[:sixth][3] == player_symbol
+		# 	return true
 		# end
 		false
 	end
