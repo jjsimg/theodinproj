@@ -5,7 +5,16 @@
 	</head>
 	<body>
 		<p>
-			The SECRET NUMBER is <%= random_num %>
+			<% if message != nil %>
+				Your guess is <%= message %>
+			<% end %>
+			<form>
+				<input type="text" name="guess">
+				<input type="submit" value="Guess!">
+			</form>
+			<% if message != nil %>
+				The SECRET NUMBER is <%= random_num %>
+			<% end %>
 		</p>
 	</body>
 </html>
