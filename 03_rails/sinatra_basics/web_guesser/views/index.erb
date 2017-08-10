@@ -2,17 +2,20 @@
 <html>
 	<head>
 		<title></title>
+		<style type="text/css">
+			body {
+				background: <%= colour %>;
+			}
+		</style>
 	</head>
 	<body>
 		<p>
-			<% if message != nil %>
-				Your guess is <%= message %>
-			<% end %>
+			Your guess is <%= message %>
 			<form>
 				<input type="text" name="guess">
 				<input type="submit" value="Guess!">
 			</form>
-			<% if message != nil %>
+			<% if message == "Correct!" %>
 				The SECRET NUMBER is <%= random_num %>
 			<% end %>
 		</p>
