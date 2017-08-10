@@ -3,9 +3,8 @@ require 'sinatra/reloader'
 
 RANDOM_NUM = rand(101)
 
-def initialize
-	@@guesses_remain = 5
-end
+@@guesses_remain = 5
+
 
 def check_guess(guess)
 	guess = guess.to_i
@@ -34,7 +33,7 @@ def get_colour(guess)
 end
 
 def check_num_guesses
-	if @@guesses == 0
+	if @@guesses_remain == 0
 		"No more guesses left"
 	end
 end
