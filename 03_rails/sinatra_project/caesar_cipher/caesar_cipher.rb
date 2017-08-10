@@ -1,12 +1,9 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-
-
+number = 4
 
 get '/' do
-	guess = params["guess"]
-	message = check_guess(guess)
-	colour = get_colour(guess)
-	erb :index, :locals => { :random_num => @@random_num, :message => message, :colour => colour }
+	secret_message = params["secret"]
+	erb :index, :locals => { :number => number }
 end
