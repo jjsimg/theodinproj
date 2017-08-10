@@ -10,7 +10,11 @@
 	</head>
 	<body>
 		<p>
-			Your guess is <%= message %>
+			<% if message != "You have run out of guesses!" %>
+				Your guess is <%= message %>
+			<% else %>
+				<%= message %>
+			<% end %>
 			<form>
 				<input type="text" name="guess">
 				<input type="submit" value="Guess!">
