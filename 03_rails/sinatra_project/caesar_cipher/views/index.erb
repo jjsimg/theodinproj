@@ -4,12 +4,13 @@
 	<title></title>
 </head>
 <body>
-	<p>This is some random message <%= number %> </p>
 	<p>
+		Type a message that you want to be encrypted
 		<form>
 			<input type="text" name="secret">
-			<input type="submit" value="Type a Message to Encrypt!">
+			<input type="submit" value="Enter">
 		</form>
+		The scrambled message is <%= secret_message %>
 	</p>
 </body>
 </html>
