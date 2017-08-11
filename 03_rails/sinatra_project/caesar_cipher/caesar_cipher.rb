@@ -11,7 +11,7 @@ def caesar(message_to_encrypt, shift = 1)
 end
 
 get '/' do
-	params["secret"] == "" ? message_to_encrypt = "blank" : message_to_encrypt = params["secret"]
+	params["secret"].nil? ? message_to_encrypt = "blank" : message_to_encrypt = params["secret"]
 	shift = rand(1..25)
 	secret_message = caesar(message_to_encrypt, shift)
 	erb :index, :locals => { :secret_message => secret_message }
