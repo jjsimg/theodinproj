@@ -15,5 +15,4 @@ get '/' do
 	shift = rand(26)
 	secret_message = caesar(message_to_encrypt, shift)
 	erb :index, :locals => { :secret_message => secret_message }
-	erb :index
 end
